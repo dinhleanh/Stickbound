@@ -564,7 +564,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8653719598885068355, guid: 675c804a82d66de47a537c67245371d3, type: 3}
       propertyPath: m_Name
-      value: walk animation v2 Variant
+      value: Stickbound_Player
       objectReference: {fileID: 0}
     - target: {fileID: -8614665703836903003, guid: 675c804a82d66de47a537c67245371d3, type: 3}
       propertyPath: m_LocalPosition.x
@@ -592,15 +592,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -7552582706839291426, guid: 675c804a82d66de47a537c67245371d3, type: 3}
       propertyPath: m_LocalScale.x
-      value: 4
+      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: -7552582706839291426, guid: 675c804a82d66de47a537c67245371d3, type: 3}
       propertyPath: m_LocalScale.y
-      value: 4
+      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: -7552582706839291426, guid: 675c804a82d66de47a537c67245371d3, type: 3}
       propertyPath: m_LocalScale.z
-      value: 4
+      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: -7552582706839291426, guid: 675c804a82d66de47a537c67245371d3, type: 3}
       propertyPath: m_LocalPosition.x
