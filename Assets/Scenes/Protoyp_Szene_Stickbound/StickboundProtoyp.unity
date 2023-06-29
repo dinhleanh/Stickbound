@@ -12896,6 +12896,9 @@ MonoBehaviour:
   WhatYouCanGrappleOnTo:
     serializedVersion: 2
     m_Bits: 64
+  WhatYouShouldNotGrappleOnTo:
+    serializedVersion: 2
+    m_Bits: 0
   cam: {fileID: 519420031}
   moveSpeedFromGrapple: 0.35
   maxGrappleLength: 15
@@ -14878,7 +14881,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.4627428}
+  m_Offset: {x: 0, y: -0.48152924}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -14889,7 +14892,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 3.0904026, y: 0.20838547}
+  m_Size: {x: 3.0904026, y: 0.4338169}
   m_EdgeRadius: 0
 --- !u!212 &730702699
 SpriteRenderer:
@@ -16076,7 +16079,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.4627428}
+  m_Offset: {x: -0.0096383095, y: -0.46756172}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -16087,7 +16090,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 3.0904026, y: 0.20838547}
+  m_Size: {x: 3.1096792, y: 0.48789406}
   m_EdgeRadius: 0
 --- !u!1 &816294706
 GameObject:
@@ -17639,7 +17642,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.020854324, y: -0.02919507}
+  m_Offset: {x: 0.040463388, y: 1.5100863}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -17650,7 +17653,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.0547745, y: 6.98161}
+  m_Size: {x: 1.0155565, y: 3.903047}
   m_EdgeRadius: 0
 --- !u!1 &861081873
 GameObject:
@@ -30777,7 +30780,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1497595848}
   m_LocalRotation: {x: -0, y: -0, z: -1, w: 0}
-  m_LocalPosition: {x: 11.38, y: -20.77, z: -1.2307566}
+  m_LocalPosition: {x: 11.41, y: -20.82, z: -1.2307566}
   m_LocalScale: {x: 1.3125, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -36995,6 +36998,9 @@ MonoBehaviour:
   WhatYouCanGrappleOnTo:
     serializedVersion: 2
     m_Bits: 64
+  WhatYouShouldNotGrappleOnTo:
+    serializedVersion: 2
+    m_Bits: 128
   cam: {fileID: 519420031}
   moveSpeedFromGrapple: 0.32
   maxGrappleLength: 10

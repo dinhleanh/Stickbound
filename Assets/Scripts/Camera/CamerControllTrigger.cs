@@ -22,8 +22,6 @@ public class CamerControllTrigger : MonoBehaviour
         if (collision.CompareTag("Player"))
         {
 
-
-
             if (customInspectorObjects.panCameraOnContact)
             {
                 // pan the Camera

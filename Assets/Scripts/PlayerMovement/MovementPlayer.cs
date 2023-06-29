@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using System.Threading;
+using Unity.VisualScripting;
 //using UnityEditor.Build.Content;
 //using UnityEditor.Experimental.GraphView;
 using UnityEngine;
@@ -100,6 +101,7 @@ public class MovementPlayer : MonoBehaviour
     [Header("GrapplingMechanik")]
     private LineRenderer lineRenderer;
     public LayerMask WhatYouCanGrappleOnTo;
+    public LayerMask WhatYouShouldNotGrappleOnTo;
     public Camera cam;
 
     [Header("Grapple Attributes")]
@@ -745,7 +747,20 @@ public class MovementPlayer : MonoBehaviour
 
             Debug.Log(IsGrappling);
 
+            RaycastHit2D falseHit = Physics2D.Raycast(rb.position, GetMousePositionAndReturnDirection(), maxGrappleLength, WhatYouShouldNotGrappleOnTo);
             RaycastHit2D hit = Physics2D.Raycast(rb.position, GetMousePositionAndReturnDirection(), maxGrappleLength, WhatYouCanGrappleOnTo);
+
+            if(hit.collider != null && falseHit.collider != null)
+            {
+                float distanceToHookable = Vector2.Distance(transform.position, hit.point);
+                float distanceToCancelHook = Vector2.Distance(transform.position, falseHit.point);
+
+                if(distanceToCancelHook< distanceToHookable)
+                {
+                    didGrappleHit = false;
+                    return;
+                }
+            }
 
             if (hit.collider != null) // hat der Raycast was gehittet?
             {
