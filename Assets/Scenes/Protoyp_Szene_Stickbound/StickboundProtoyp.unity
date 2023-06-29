@@ -38533,7 +38533,7 @@ MonoBehaviour:
   isInDashCooldown: 0
   isDashing: 0
   dashingPower: 25
-  dashingTime: 0.17
+  dashingTime: 0.15
   dashingCooldown: 0.4
   tr: {fileID: 0}
   WhatYouCanGrappleOnTo:
