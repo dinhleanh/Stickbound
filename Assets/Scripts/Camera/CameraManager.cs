@@ -43,7 +43,7 @@ public class CameraManager : MonoBehaviour
     {
         if (instance == null)
         {
-
+            
             instance = this;
         }
         //else
@@ -224,4 +224,3 @@ public class CameraManager : MonoBehaviour
 
     #endregion
 }
-

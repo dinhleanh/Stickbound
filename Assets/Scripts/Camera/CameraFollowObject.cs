@@ -21,7 +21,7 @@ public class CameraFollowObject : MonoBehaviour
     private void Awake()
     {
         _player = _playerTransform.gameObject.GetComponent<MovementPlayer>();
-
+        
         _isFacingRight = _player.IsFacingRight;
     }
 
@@ -33,7 +33,7 @@ public class CameraFollowObject : MonoBehaviour
 
     public void CallTurn()
     {
-
+       
         _turnCoroutine = StartCoroutine(FlipYLerp());
     }
 
@@ -44,13 +44,13 @@ public class CameraFollowObject : MonoBehaviour
         float yRotation = 0f;
 
         float elapsedTime = 0f;
-        while (elapsedTime < _flipYRotationTime)
+        while(elapsedTime < _flipYRotationTime)
         {
             elapsedTime += Time.deltaTime;
 
             // lerp the y rotation
             yRotation = Mathf.Lerp(startRotation, endRotationAmount, (elapsedTime / _flipYRotationTime));
-            transform.rotation = Quaternion.Euler(0f, yRotation, 0f);
+            transform.rotation = Quaternion.Euler(0f,yRotation, 0f);
 
             yield return null;
         }
@@ -60,7 +60,7 @@ public class CameraFollowObject : MonoBehaviour
     {
         _isFacingRight = !_isFacingRight;
 
-        if (_isFacingRight)
+        if(_isFacingRight )
         {
             return 0;
         }

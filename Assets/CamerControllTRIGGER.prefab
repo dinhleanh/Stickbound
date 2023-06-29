@@ -46,7 +46,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: -0.13204646}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -57,7 +57,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 6.572006, y: 4.861396}
+  m_Size: {x: 6.572006, y: 4.597303}
   m_EdgeRadius: 0
 --- !u!114 &9042973684951535845
 MonoBehaviour:
@@ -68,7 +68,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 9042973684951535847}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 853c340d973707b43acd4db9e7915fcc, type: 3}
+  m_Script: {fileID: 11500000, guid: 26d5faa75e9d1af418fc4a523e4ce3c8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   customInspectorObjects:
@@ -76,6 +76,6 @@ MonoBehaviour:
     panCameraOnContact: 0
     cameraOnLeft: {fileID: 0}
     cameraOnRight: {fileID: 0}
-    panDirection: 0
+    panDirection: 1
     panDistance: 3
     panTime: 0.35
