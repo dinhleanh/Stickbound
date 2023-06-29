@@ -68,14 +68,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 9042973684951535847}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 26d5faa75e9d1af418fc4a523e4ce3c8, type: 3}
+  m_Script: {fileID: 11500000, guid: 853c340d973707b43acd4db9e7915fcc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   customInspectorObjects:
     swapCameras: 0
-    panCameraOnContact: 1
+    panCameraOnContact: 0
     cameraOnLeft: {fileID: 0}
     cameraOnRight: {fileID: 0}
-    panDirection: 1
+    panDirection: 0
     panDistance: 3
     panTime: 0.35

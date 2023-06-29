@@ -31,6 +31,7 @@ public class MovementPlayer : MonoBehaviour
     public Rigidbody2D rb;
     private Vector2 moveVector = Vector2.zero;
     [SerializeField] private float moveSpeed = 12f;
+    [SerializeField] private float airMoveSpeed = 8f;
 
 
 
@@ -108,6 +109,7 @@ public class MovementPlayer : MonoBehaviour
     public bool didGrappleHit = false;
 
     public bool IsInGrapplingCooldown = false;
+    public float grappleCooldown = 0.2f;
     public bool IsGrappling = false;
 
     public bool canGrapple = true;
@@ -291,7 +293,7 @@ public class MovementPlayer : MonoBehaviour
         IsGrounded = touchingCol.Cast(Vector2.down, CastFilter, groundHits, groundDistance) > 0;
         IsOnWall = touchingCol.Cast(WallCheckDirection, CastFilter, wallHits, wallDistance) > 0;
 
-
+        
         SetFacingDirection(moveVector);
         JumpBuffer();
         Coyotetimer();
@@ -308,7 +310,15 @@ public class MovementPlayer : MonoBehaviour
 
         if (!isDashing && !isInDashCooldown && !IsOnWall && !IsGrappling && !IsInGrapplingCooldown)
         {
-            rb.velocity = new Vector2(moveVector.x * moveSpeed, rb.velocity.y); // Man könnte hier auch mit Forces Arbeiten!
+            if(!IsGrounded)
+            {
+                rb.velocity = new Vector2(moveVector.x * airMoveSpeed, rb.velocity.y); // Man könnte hier auch mit Forces Arbeiten!
+            }
+            else
+            {
+                rb.velocity = new Vector2(moveVector.x * moveSpeed, rb.velocity.y); // Man könnte hier auch mit Forces Arbeiten!
+            }
+            
         }
         // kein Wall Slide oder Jump
         else if (IsOnWall && !IsGrappling)
@@ -349,6 +359,11 @@ public class MovementPlayer : MonoBehaviour
         }
 
         if (IsGrappling)
+        {
+            rb.gravityScale = gravityScale;
+        }
+
+        if (IsInGrapplingCooldown && !isDashing)
         {
             rb.gravityScale = gravityScale;
         }
@@ -784,12 +799,12 @@ public class MovementPlayer : MonoBehaviour
             canDash = true;
             IsGrappling = false;
             Detatch();
-
+            IsInGrapplingCooldown = true;
 
             // Vll hier noch einbauen was passiert wenn man die Tasten drückt nach dem Grappling Hook
             if (moveVector.x == 0f && didGrappleHit)
             {
-                IsInGrapplingCooldown = true;
+                
 
                 if (rb.position.y < moveTo.y && IsFacingRight)
                 {
@@ -806,10 +821,11 @@ public class MovementPlayer : MonoBehaviour
                     rb.velocity = new Vector2(0, -20); // Für krassen Downfall Movement!
                 }
             }
-            else
+            else if(moveVector.x != 0f && didGrappleHit)
             {
-                IsInGrapplingCooldown = false;
-                xVelocityAfterGrappleInfluencedByMouseDuration = 0; // reset
+            
+                    rb.velocity = new Vector2(rb.velocity.x, 4);
+                
             }
 
 
@@ -832,7 +848,8 @@ public class MovementPlayer : MonoBehaviour
     private IEnumerator GrappleCooldown()
     {
 
-        yield return new WaitForSeconds(0.6f);
+        yield return new WaitForSeconds(grappleCooldown);
+        IsInGrapplingCooldown = false;
         canGrapple = true;
     }
 
