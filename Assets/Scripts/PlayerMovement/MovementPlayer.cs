@@ -32,7 +32,7 @@ public class MovementPlayer : MonoBehaviour
     private Vector2 moveVector = Vector2.zero;
     [SerializeField] private float moveSpeed = 12f;
     [SerializeField] private float airMoveSpeed = 8f;
-
+    public Animator animator;
 
 
 
@@ -264,6 +264,8 @@ public class MovementPlayer : MonoBehaviour
         lineRenderer = GetComponent<LineRenderer>();
 
         lineRenderer.positionCount = 0; // no lines showing nur für grapplemechanik
+
+        animator = GetComponent<Animator>();
     }
 
 
@@ -293,7 +295,11 @@ public class MovementPlayer : MonoBehaviour
         IsGrounded = touchingCol.Cast(Vector2.down, CastFilter, groundHits, groundDistance) > 0;
         IsOnWall = touchingCol.Cast(WallCheckDirection, CastFilter, wallHits, wallDistance) > 0;
 
-        
+        //Animation Parameter
+        animator.SetFloat("isWalking", Math.Abs(rb.velocity.x));
+        animator.SetFloat("isJumping", Math.Abs(rb.velocity.y));
+        //animator.SetFloat("isAttack", 0);
+
         SetFacingDirection(moveVector);
         JumpBuffer();
         Coyotetimer();
@@ -330,7 +336,7 @@ public class MovementPlayer : MonoBehaviour
 
         SetFacingDirection(moveVector);
 
-
+        
     }
 
     #endregion
