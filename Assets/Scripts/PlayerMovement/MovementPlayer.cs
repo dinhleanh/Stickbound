@@ -298,7 +298,7 @@ public class MovementPlayer : MonoBehaviour
         //Animation Parameter
         animator.SetFloat("isWalking", Math.Abs(rb.velocity.x));
         animator.SetFloat("isJumping", Math.Abs(rb.velocity.y));
-        animator.SetFloat("isAttack", 0);
+        //animator.SetFloat("isAttack", 0);
 
         SetFacingDirection(moveVector);
         JumpBuffer();
