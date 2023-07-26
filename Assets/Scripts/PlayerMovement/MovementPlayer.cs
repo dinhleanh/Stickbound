@@ -25,7 +25,8 @@ public class MovementPlayer : MonoBehaviour
 
     #endregion
 
-
+    //NEW 
+    private bool canFlip = true;
 
     [Header("Base")]
     public Rigidbody2D rb;
@@ -437,38 +438,53 @@ public class MovementPlayer : MonoBehaviour
 
     }
 
+    // NEEEEEEEEEEEEEEEEEWWWWWWWWWWWWW
+    public void DisableFlip()
+    {
+        canFlip = false;
+    }
+
+    public void EnableFlip()
+    {
+        canFlip = true;
+    }
+
     // Rotation nicht mit scale = -1 sondern rotation !!!
     private void Turn()
     {
-        if (IsFacingRight)
+        if (canFlip)
         {
-            Vector3 rotator = new Vector3(transform.rotation.x, 180f, transform.rotation.z);
-            transform.rotation = Quaternion.Euler(rotator);
-            IsFacingRight = !IsFacingRight;
-
-
-            //turn the camerafollowObject
-            if (_cameraFollowObject == null)
+            if (IsFacingRight)
             {
-                Debug.LogWarning("camerFollowObject==null");
+                Vector3 rotator = new Vector3(transform.rotation.x, 180f, transform.rotation.z);
+                transform.rotation = Quaternion.Euler(rotator);
+                IsFacingRight = !IsFacingRight;
+
+
+                //turn the camerafollowObject
+                if (_cameraFollowObject == null)
+                {
+                    Debug.LogWarning("camerFollowObject==null");
+                }
+
+                _cameraFollowObject.CallTurn();
             }
-
-            _cameraFollowObject.CallTurn();
-        }
-        else
-        {
-            Vector3 rotator = new Vector3(transform.rotation.x, 0, transform.rotation.z);
-            transform.rotation = Quaternion.Euler(rotator);
-            IsFacingRight = !IsFacingRight;
-
-            // turn the camerafollowObject
-            if (_cameraFollowObject == null)
+            else
             {
-                Debug.LogWarning("camerFollowObject==null");
-            }
+                Vector3 rotator = new Vector3(transform.rotation.x, 0, transform.rotation.z);
+                transform.rotation = Quaternion.Euler(rotator);
+                IsFacingRight = !IsFacingRight;
 
-            _cameraFollowObject.CallTurn();
+                // turn the camerafollowObject
+                if (_cameraFollowObject == null)
+                {
+                    Debug.LogWarning("camerFollowObject==null");
+                }
+
+                _cameraFollowObject.CallTurn();
+            }
         }
+        
     }
 
     #endregion

@@ -3480,7 +3480,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 189547282}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Right Arm Solver_Target
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11342,7 +11342,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 593161076}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Right Arm Effector
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11419,6 +11419,14 @@ PrefabInstance:
       propertyPath: m_LocalRotation.z
       value: -0.9172715
       objectReference: {fileID: 0}
+    - target: {fileID: 1927163976750723816, guid: 3193f31e048fa6248a2a20eefb998e67, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 2053757779748147332, guid: 3193f31e048fa6248a2a20eefb998e67, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 2337894125215835150, guid: 3193f31e048fa6248a2a20eefb998e67, type: 3}
       propertyPath: m_LocalPosition.x
       value: 4.3923573
@@ -11426,6 +11434,58 @@ PrefabInstance:
     - target: {fileID: 2337894125215835150, guid: 3193f31e048fa6248a2a20eefb998e67, type: 3}
       propertyPath: m_LocalPosition.y
       value: 0.84563935
+      objectReference: {fileID: 0}
+    - target: {fileID: 2775458981279666074, guid: 3193f31e048fa6248a2a20eefb998e67, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 3224963639438185612, guid: 3193f31e048fa6248a2a20eefb998e67, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 3424518785841646041, guid: 3193f31e048fa6248a2a20eefb998e67, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 3504268343335259468, guid: 3193f31e048fa6248a2a20eefb998e67, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 3726028113924665752, guid: 3193f31e048fa6248a2a20eefb998e67, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 3751470937427552305, guid: 3193f31e048fa6248a2a20eefb998e67, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 3795965038740232355, guid: 3193f31e048fa6248a2a20eefb998e67, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4243817060962586432, guid: 3193f31e048fa6248a2a20eefb998e67, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4289748214852248450, guid: 3193f31e048fa6248a2a20eefb998e67, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4507613166399218785, guid: 3193f31e048fa6248a2a20eefb998e67, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4567053940578017567, guid: 3193f31e048fa6248a2a20eefb998e67, type: 3}
+      propertyPath: m_RootOrder
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 4567053940578017567, guid: 3193f31e048fa6248a2a20eefb998e67, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 3.17
+      objectReference: {fileID: 0}
+    - target: {fileID: 4567053940578017567, guid: 3193f31e048fa6248a2a20eefb998e67, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.04
       objectReference: {fileID: 0}
     - target: {fileID: 4650565652013268978, guid: 3193f31e048fa6248a2a20eefb998e67, type: 3}
       propertyPath: m_LocalRotation.w
@@ -11482,6 +11542,18 @@ PrefabInstance:
     - target: {fileID: 5369946450529827027, guid: 3193f31e048fa6248a2a20eefb998e67, type: 3}
       propertyPath: m_Name
       value: walk animation v2 Variant 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5369946450529827027, guid: 3193f31e048fa6248a2a20eefb998e67, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 5369946450529827027, guid: 3193f31e048fa6248a2a20eefb998e67, type: 3}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 5864597027163145253, guid: 3193f31e048fa6248a2a20eefb998e67, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 6507129769765134512, guid: 3193f31e048fa6248a2a20eefb998e67, type: 3}
       propertyPath: m_RootOrder
@@ -11543,6 +11615,14 @@ PrefabInstance:
       propertyPath: m_SortingOrder
       value: 7
       objectReference: {fileID: 0}
+    - target: {fileID: 7208579028957999948, guid: 3193f31e048fa6248a2a20eefb998e67, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 7348335991951586602, guid: 3193f31e048fa6248a2a20eefb998e67, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 7475075366531686527, guid: 3193f31e048fa6248a2a20eefb998e67, type: 3}
       propertyPath: m_LocalRotation.w
       value: 0.999994
@@ -11550,6 +11630,22 @@ PrefabInstance:
     - target: {fileID: 7475075366531686527, guid: 3193f31e048fa6248a2a20eefb998e67, type: 3}
       propertyPath: m_LocalRotation.z
       value: 0.003477483
+      objectReference: {fileID: 0}
+    - target: {fileID: 7557012241989403884, guid: 3193f31e048fa6248a2a20eefb998e67, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 7850720320475171972, guid: 3193f31e048fa6248a2a20eefb998e67, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 8367387016194438054, guid: 3193f31e048fa6248a2a20eefb998e67, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 8493219703878072841, guid: 3193f31e048fa6248a2a20eefb998e67, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 8801483411378459638, guid: 3193f31e048fa6248a2a20eefb998e67, type: 3}
       propertyPath: m_Enabled
@@ -11570,6 +11666,10 @@ PrefabInstance:
     - target: {fileID: 8851459964934795917, guid: 3193f31e048fa6248a2a20eefb998e67, type: 3}
       propertyPath: m_LocalRotation.z
       value: -0.009191886
+      objectReference: {fileID: 0}
+    - target: {fileID: 9190035785926937861, guid: 3193f31e048fa6248a2a20eefb998e67, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3193f31e048fa6248a2a20eefb998e67, type: 3}
@@ -14370,7 +14470,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 694192190}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Right Leg Solver_Target
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -17228,7 +17328,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 841737595}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Left Leg Solver_Target
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -21002,7 +21102,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1017229041}
   - component: {fileID: 1017229042}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Left Arm Solver
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -25906,7 +26006,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1224919915}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Left Arm Effector
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -27633,7 +27733,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1310418766}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Right Leg Effector
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -30116,7 +30216,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1437782976}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Left Leg Effector
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -31582,6 +31682,11 @@ Transform:
   m_Father: {fileID: 1882336961}
   m_RootOrder: 76
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -90}
+--- !u!4 &1516320039 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4567053940578017567, guid: 3193f31e048fa6248a2a20eefb998e67, type: 3}
+  m_PrefabInstance: {fileID: 594602491}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1521526577
 GameObject:
   m_ObjectHideFlags: 0
@@ -37824,6 +37929,26 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &1810714191
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1810714174}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 06b61e54516cdd346bb76391caa651d7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  combatEnabled: 0
+  inputTimer: 0.2
+  attack1Radius: 0.8
+  attack1Damage: 10
+  attack1HitBoxPosition: {fileID: 1516320039}
+  whatIsDamageable:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!1 &1815427422
 GameObject:
   m_ObjectHideFlags: 0
@@ -41276,7 +41401,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1991331748}
   - component: {fileID: 1991331749}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Right Leg Solver
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -41536,7 +41661,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2012560051}
   - component: {fileID: 2012560052}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Left Leg Solver
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -41601,7 +41726,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2013565703}
   - component: {fileID: 2013565704}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Right Arm Solver
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -43151,7 +43276,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2106268624}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Left Arm Solver_Target
   m_TagString: Untagged
   m_Icon: {fileID: 0}
