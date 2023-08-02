@@ -21,8 +21,8 @@ public class E1_DeadState : DeadState
     {
         base.Enter();
 
-        stateMachine.ChangeState(enemy.moveState);
-        entity.aliveGO.SetActive(false);
+        //stateMachine.ChangeState(enemy.moveState);
+        //entity.aliveGO.SetActive(false);
 
     }
 

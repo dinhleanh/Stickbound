@@ -196,7 +196,22 @@ public class Entity : MonoBehaviour
             isDead = true;
         }
 
+    }
 
+    public virtual void Respawn()
+    {
+        if(gameManager.respawn && aliveGO.activeInHierarchy == false)
+        {
+            isDead = false;
+            aliveGO.SetActive(true);
+            currentHealth = entityData.maxHealth;
+            currentStunResistance = entityData.stunResistance;
+        }
+    }
+
+    public virtual float WhatIsCurrentHealth()
+    {
+        return currentHealth;
     }
 
     public virtual void Flip()

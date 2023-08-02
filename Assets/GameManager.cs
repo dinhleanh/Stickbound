@@ -5,13 +5,11 @@ using Cinemachine;
 
 public class GameManager : MonoBehaviour
 {
-    //TODO: 
-    // Enemy respawnen wenn sie schon tot sind funktioniert noch nicht richtig!!!!!!!!!!!!!
 
+    public CheckPointManager checkPointManager;
     
-    public Transform respawnPoint;
-    [SerializeField]
-    private Vector2 respawnPointEnemy;
+    //public Transform respawnPoint;
+    
     [SerializeField]
     private GameObject player;
     [SerializeField]
@@ -20,60 +18,73 @@ public class GameManager : MonoBehaviour
     private float respawnTimeStart;
     public bool respawn;
 
+    private Vector3 originalPlayerScale;
 
     private CinemachineVirtualCamera cinemachineVirtualCamera;
 
-    //[SerializeField]
-    //private GameObject enemy;
 
-    //public Entity deadState;
+
+
+   public  List <Enemy1> enemyRespawner;
+
+
+
 
     private void Start()
     {
 
         cinemachineVirtualCamera = GameObject.Find("OpenRoomMainCamera").GetComponent<CinemachineVirtualCamera>();
-        //deadState = GetComponent<Entity>();
+        
+
+
     }
 
     private void Update()
     {
         CheckRespawn();
-        //CheckRespawnEnemy();
-        respawnPoint.localScale = Vector3.one;
+
+        //respawnPoint.localScale = Vector3.one;
+        
     }
 
     public void Respawn()
     {
         respawnTimeStart = Time.time;
+        
+        originalPlayerScale = player.transform.localScale;
         respawn = true;
 
     }
 
     private void CheckRespawn()
     {
+        
+        
+
+
+
         if (Time.time >= respawnTimeStart + respawnTime && respawn)
         {
+            foreach (Enemy1 enemy in enemyRespawner)
+            {
+                enemy.Respawn();
+            }
 
-            var playerTemp = Instantiate(player, respawnPoint);
-            cinemachineVirtualCamera.m_Follow = playerTemp.transform;
+            // Instanziere das Prefab
+            GameObject playerClone = Instantiate(player, checkPointManager.GetLastCheckpointPosition(), Quaternion.identity);
+
+            // Stelle die ursprüngliche Skalierung des Spielers im Klon wieder her
+            playerClone.transform.localScale = originalPlayerScale;
+
+            
+            cinemachineVirtualCamera.m_Follow = playerClone.transform;
             respawn = false;
 
         }
 
     }
 
-    //public void CheckRespawnEnemy()
-    //{
-    //    if (Time.time >= respawnTimeStart + respawnTime && respawn)
-    //    {
-    //        Debug.Log("lol");
-    //        var enemyTemp = Instantiate(enemy, deadState.EnemyRespawn);
-
-    //        respawn = false;
-
-    //    }
-
-    //}
+   
 
 
 }

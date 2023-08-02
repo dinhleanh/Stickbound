@@ -1,28 +1,27 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Checkpoint : MonoBehaviour
 {
-    public GameManager GameManager;
+    private CheckPointManager checkpointManager;
+    private bool isReached = false;
 
-    private SpriteRenderer sprite;
+    private SpriteRenderer spriteRenderer;
 
-    private void Awake()
+    private void Start()
     {
-        GameManager =  GameObject.Find("GameManager").GetComponent<GameManager>();
-        sprite =GetComponent<SpriteRenderer>();
+        spriteRenderer=GetComponent<SpriteRenderer>();
+        checkpointManager = FindObjectOfType<CheckPointManager>();
+        checkpointManager.RegisterCheckpoint(this);
     }
 
-
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnTriggerEnter2D(Collider2D other)
     {
-        Debug.Log("hey bonfire");
-        if (collision.tag == "Player")
+        if (other.CompareTag("Player") && !isReached)
         {
-            Debug.Log("hey bonfire");
-            sprite.color = Color.white;
-            GameManager.respawnPoint = this.transform;
+            spriteRenderer.color = Color.yellow;
+            checkpointManager.SetLastCheckpoint(this);
+            isReached = true;
+            // Weitere Aktionen, z.B. Aktivieren des Checkpoint-Sprites
         }
     }
 }
