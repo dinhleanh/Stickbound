@@ -91,7 +91,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6767311975681585700}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 45.85, y: -25.39, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -338,7 +338,6 @@ GameObject:
   m_Component:
   - component: {fileID: 6767311976986652903}
   - component: {fileID: 6767311976986652902}
-  - component: {fileID: 1484636371162229004}
   m_Layer: 7
   m_Name: Enemy1_Patrolling
   m_TagString: Enemy
@@ -390,16 +389,3 @@ MonoBehaviour:
   stunStateData: {fileID: 11400000, guid: 441c2537a574d6940bf95a0f21cf4aed, type: 2}
   deadStateData: {fileID: 11400000, guid: 9b1b55b8ba505504c9886a3c852a5ac0, type: 2}
   meleeAttackPosition: {fileID: 6767311975479890365}
---- !u!114 &1484636371162229004
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6767311976986652896}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ae1e6a8ebc90e9042975694f89c5e99a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_transform: {fileID: 6767311975681585691}

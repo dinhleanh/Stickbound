@@ -7,8 +7,8 @@ using UnityEngine;
 public class DeadState : State
 {
     protected DataForDeadState stateData;
-    GameManager gameManager;
-    //public Transform lol;
+    
+    
     
     public DeadState(Entity _entity, FiniteStateMachine _stateMachine, string _animBoolName, DataForDeadState _stateData) : base(_entity, _stateMachine, _animBoolName)
     {
@@ -19,7 +19,7 @@ public class DeadState : State
     {
         base.DoChecks();
 
-        gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+        
         
     }
 
@@ -30,12 +30,8 @@ public class DeadState : State
         GameObject.Instantiate(stateData.deathBloodParticle, entity.aliveGO.transform.position,stateData.deathBloodParticle.transform.rotation);
         GameObject.Instantiate(stateData.deathChunkParticle, entity.aliveGO.transform.position, stateData.deathChunkParticle.transform.rotation);
 
-
-        //lol = entity.aliveGO.transform;
-        //GameObject.Destroy(entity.gameObject);
-        
-        //entity.aliveGO.SetActive(false);
-
+       
+        entity.aliveGO.SetActive(false);
     }
 
     public override void Exit()

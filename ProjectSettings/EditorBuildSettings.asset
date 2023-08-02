@@ -6,6 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/MainMenu.unity
+    guid: a3a815cbf6508d74c90347f43cf2d8b1
+  - enabled: 1
     path: Assets/Scenes/StickboundLOL.unity
     guid: 2cda990e2423bbf4892e6590ba056729
   m_configObjects: {}
