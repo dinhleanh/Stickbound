@@ -35,25 +35,24 @@ public class Spikes : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log(canDamage);
-        if (canDamage)
-        {
-            if (collision.tag == "Player")
+        
+
+        
+            if (collision.gameObject.name == "Player" || collision.gameObject.name == "Player(Clone)")
             {
-                canDamage = false;
-                playerStats.DecreaseHealth(damageSpikes);
+                //canDamage = false;
+                //if (canDamage)
+                    //playerStats.DecreaseHealth(damageSpikes);
 
                 PlayerMove.KnockbackSpikes(knockback);
 
-
             }
-        }
         
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        canDamage = true;
+        //canDamage = false;
     }
 
 

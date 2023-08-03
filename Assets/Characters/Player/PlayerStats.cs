@@ -41,7 +41,9 @@ public class PlayerStats : MonoBehaviour
         //int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
 
         //SceneManager.LoadScene(currentSceneIndex, LoadSceneMode.Single);
+        //transform.position = new Vector3(1, 1, 1);
         gameManager.Respawn();
         gameObject.SetActive(false);
+        //Destroy(gameObject);
     }
 }
