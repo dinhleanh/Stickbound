@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5656245620773689040}
   - component: {fileID: 5656245620773689041}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Triangle (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -97,7 +97,7 @@ GameObject:
   - component: {fileID: 5656245621303104707}
   - component: {fileID: 5656245621303104706}
   - component: {fileID: 5656245621303104711}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: SpikesLolPrefab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -246,7 +246,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5656245621647041127}
   - component: {fileID: 5656245621647041128}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Triangle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
