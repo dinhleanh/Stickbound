@@ -6,4 +6,6 @@ using UnityEngine;
 public class DataFor_PlayerDetectedState : ScriptableObject
 {
     public float longRangeActionTime = 1.5f;
+
+    
 }
