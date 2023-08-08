@@ -285,8 +285,8 @@ MonoBehaviour:
   knockbackDuration: 0.2
   knockbackSpeed: {x: 5, y: 17}
   rb: {fileID: 0}
-  moveSpeed: 13
-  airMoveSpeed: 11
+  moveSpeed: 14
+  airMoveSpeed: 12
   animator: {fileID: 0}
   _cameraFollowObject: {fileID: 0}
   gravityScale: 10
