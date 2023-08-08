@@ -322,6 +322,8 @@ public class MovementPlayer : MonoBehaviour
     void Update()
     {
 
+        IsInGrappleRange();
+
         // Raycasts hier fehlt noch IsOnCeiling
         //IsGrounded = touchingCol.Cast(Vector2.down, CastFilter, groundHits, groundDistance) > 0;
 
@@ -1083,6 +1085,22 @@ public class MovementPlayer : MonoBehaviour
         }
     }
 
+    public bool IsInGrappleRange()
+    {
+        Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        mousePosition.z = 0f;
+
+        float distanceToMouse = Vector3.Distance(transform.position, mousePosition);
+
+        if (distanceToMouse <= maxGrappleLength)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
 
     // fix für perspective camera
 
@@ -1095,4 +1113,9 @@ public class MovementPlayer : MonoBehaviour
         return ray.GetPoint(distance);
     }
 
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawWireSphere(transform.position, maxGrappleLength);
+    }
 }
