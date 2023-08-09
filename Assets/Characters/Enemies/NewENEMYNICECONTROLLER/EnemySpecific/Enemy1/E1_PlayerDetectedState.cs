@@ -42,11 +42,12 @@ public class E1_PlayerDetectedState : PlayerDetectedState
         {
             // HIER KANN MAN BUG BEHEBEN IN DEM DER GEGNER DEN SPIELER AUF DER ANDEREN SEITE DER PLATTFORM ERKENNT
             
-            entity.Flip();
+           
 
             //stateMachine.ChangeState(enemy.idleState);
-            if (isDetectingPlayer)
+            if (isDetectingPlayer && !enemy.isHopping)
             {
+                entity.Flip();
                 entity.SetVelocity(0f);
                 stateMachine.ChangeState(enemy.moveState);
                 
