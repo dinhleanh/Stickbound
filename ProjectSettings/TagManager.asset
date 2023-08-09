@@ -39,12 +39,33 @@ TagManager:
   - 
   - 
   m_SortingLayers:
-  - name: Background
+  - name: background far
+    uniqueID: 2209111425
+    locked: 0
+  - name: background
     uniqueID: 3969479107
+    locked: 0
+  - name: background close
+    uniqueID: 3807194905
+    locked: 0
+  - name: middleground
+    uniqueID: 3172697931
+    locked: 0
+  - name: middleground close
+    uniqueID: 1878488915
     locked: 0
   - name: Enemy
     uniqueID: 3110421811
     locked: 0
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: ground
+    uniqueID: 582433475
+    locked: 0
+  - name: foreground
+    uniqueID: 3433324013
+    locked: 0
+  - name: close foreground
+    uniqueID: 284288345
     locked: 0
