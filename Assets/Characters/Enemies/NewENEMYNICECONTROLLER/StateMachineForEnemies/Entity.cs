@@ -206,6 +206,10 @@ public class Entity : MonoBehaviour
 
     }
 
+    
+
+
+
     public virtual void Respawn()
     {
         if(gameManager.respawn && aliveGO.activeInHierarchy == false)

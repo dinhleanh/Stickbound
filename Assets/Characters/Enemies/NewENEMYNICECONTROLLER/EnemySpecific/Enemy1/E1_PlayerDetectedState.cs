@@ -45,7 +45,7 @@ public class E1_PlayerDetectedState : PlayerDetectedState
            
 
             //stateMachine.ChangeState(enemy.idleState);
-            if (isDetectingPlayer && !enemy.isHopping)
+            if (isDetectingPlayer && ground)
             {
                 entity.Flip();
                 entity.SetVelocity(0f);

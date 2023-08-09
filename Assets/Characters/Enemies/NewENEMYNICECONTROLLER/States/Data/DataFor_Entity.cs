@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -23,6 +24,9 @@ public class DataFor_Entity : ScriptableObject
     public float stunRecoveryTime = 2f;
 
     public float closeRangeActionDistance = 1f;
+
+    
+
 
     public GameObject hitParticle;
 

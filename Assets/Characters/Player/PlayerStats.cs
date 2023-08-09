@@ -25,12 +25,16 @@ public class PlayerStats : MonoBehaviour
 
     private void Update()
     {
+        ClampHealth();
        // Debug.Log(currentHealth);
-       
+
     }
 
 
-    
+    private void ClampHealth()
+    {
+        currentHealth = Mathf.Clamp(currentHealth, 0, maxHealth);
+    }
 
 
 

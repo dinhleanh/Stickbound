@@ -19,7 +19,7 @@ public class Spikes : MonoBehaviour
     [SerializeField]
     private float knockback = 1f;
 
-    private bool canDamage = true;
+    //private bool canDamage = true;
     //private float damageCooldown = 1f;
 
     private void Awake()
