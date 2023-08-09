@@ -69,3 +69,6 @@ TagManager:
   - name: close foreground
     uniqueID: 284288345
     locked: 0
+  - name: LEON
+    uniqueID: 4244646919
+    locked: 0
