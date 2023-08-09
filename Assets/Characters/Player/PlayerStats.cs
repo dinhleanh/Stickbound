@@ -23,7 +23,18 @@ public class PlayerStats : MonoBehaviour
         gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
     }
 
-   
+    private void Update()
+    {
+       // Debug.Log(currentHealth);
+       
+    }
+
+
+    
+
+
+
+
     public void DecreaseHealth(float amount)
     {
         
@@ -36,6 +47,11 @@ public class PlayerStats : MonoBehaviour
         }
     }
 
+    public void ResetHealth()
+    {
+        currentHealth = maxHealth;
+    }
+
     private void Die()
     {
         //int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
@@ -43,7 +59,14 @@ public class PlayerStats : MonoBehaviour
         //SceneManager.LoadScene(currentSceneIndex, LoadSceneMode.Single);
         //transform.position = new Vector3(1, 1, 1);
         gameManager.Respawn();
-        gameObject.SetActive(false);
+        //gameObject.SetActive(false);
         //Destroy(gameObject);
     }
+
+    public float ShowCurrentHealth()
+    {
+       
+        return currentHealth;
+    }
+
 }

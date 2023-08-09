@@ -112,7 +112,7 @@ public class MovementPlayer : MonoBehaviour
 
 
     [Header("Dash - Soll der Spieler während Dash Jumpen dürfen?(Am Boden)")]
-    [SerializeField] private bool canDash = true;
+    [SerializeField] public bool canDash = true;
     [SerializeField] private bool isInDashCooldown = false;
     [SerializeField] public bool isDashing;
     [SerializeField] private float dashingPower = 35f;

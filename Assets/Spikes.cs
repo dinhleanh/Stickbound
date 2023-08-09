@@ -42,7 +42,7 @@ public class Spikes : MonoBehaviour
             {
                 //canDamage = false;
                 //if (canDamage)
-                    //playerStats.DecreaseHealth(damageSpikes);
+                playerStats.DecreaseHealth(damageSpikes);
 
                 PlayerMove.KnockbackSpikes(knockback);
 

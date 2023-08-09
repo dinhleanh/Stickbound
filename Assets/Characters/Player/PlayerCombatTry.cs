@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class PlayerCombatTry : MonoBehaviour
 {
-
+    
 
 
     private PlayerStats PS;
@@ -39,26 +39,32 @@ public class PlayerCombatTry : MonoBehaviour
 
     private Animator anim;
 
+    
+
 
     private void Awake()
     {
         PS = GetComponent<PlayerStats>();
         anim = GetComponent<Animator>();
         PL = GetComponent<MovementPlayer>();
+        
     }
     private void Start()
     {
         
-        anim.SetBool("canAttack", combatEnabled);
+        //anim.SetBool("canAttack", combatEnabled);
     }
 
     private void Update()
     {
         CheckCombatInput();
         CheckAttack();
+
+        
     }
     private void CheckCombatInput()
     {
+        
         if (Input.GetMouseButtonDown(0))
         {
             if(combatEnabled)
@@ -76,14 +82,14 @@ public class PlayerCombatTry : MonoBehaviour
         if(gotInput)
         {
             // perform Attack1
-            if(!isAttacking)
+            if(!isAttacking && PS.ShowCurrentHealth() > 0f)
             {
                 //pl.SetVelocityZero();
                 gotInput = false;
                 isAttacking = true;
                 //isFirstAttack = !isFirstAttack;
                 anim.SetBool("attack1", true);
-                anim.SetBool("firstAttack", isFirstAttack);
+                //anim.SetBool("firstAttack", isFirstAttack);
                 anim.SetBool("isAttacking", isAttacking);
             }
         }
@@ -94,6 +100,7 @@ public class PlayerCombatTry : MonoBehaviour
             gotInput = false;
         }
     }
+
 
     private void CheckAttackHitBox()
     {
@@ -111,17 +118,17 @@ public class PlayerCombatTry : MonoBehaviour
         }
     }
 
-    private void FinishAttack1()
+    public void FinishAttack1()
     {
        
         isAttacking = false;
-        
+        Debug.Log("EndAttackAnimation method called.");
         anim.SetBool("isAttacking", isAttacking);
         anim.SetBool("attack1", false);
     }
 
 
-    private void Damage(AttackDetails attackDetails)
+    public void Damage(AttackDetails attackDetails)
     {
         if (!PL.GetDashStatus())
         {

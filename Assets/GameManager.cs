@@ -11,7 +11,11 @@ public class GameManager : MonoBehaviour
     //public Transform respawnPoint;
     
     [SerializeField]
-    private GameObject player;
+    private PlayerStats playerStats;
+    [SerializeField]
+    private PlayerCombatTry playerCombat;
+    [SerializeField]
+    private MovementPlayer playerMove;
     [SerializeField]
     private float respawnTime;
 
@@ -34,9 +38,10 @@ public class GameManager : MonoBehaviour
     {
 
         cinemachineVirtualCamera = GameObject.Find("OpenRoomMainCamera").GetComponent<CinemachineVirtualCamera>();
-        
 
-
+        playerStats = GameObject.Find("Player").GetComponent<PlayerStats>();
+        playerCombat = GameObject.Find("Player").GetComponent <PlayerCombatTry>();
+        playerMove = GameObject.Find("Player").GetComponent<MovementPlayer>();
     }
 
     private void Update()
@@ -51,9 +56,13 @@ public class GameManager : MonoBehaviour
     {
         respawnTimeStart = Time.time;
         
-        originalPlayerScale = player.transform.localScale;
+        originalPlayerScale = playerStats.transform.localScale;
         respawn = true;
-
+        //Time.timeScale = 0f;
+        playerMove.canDash = true;
+        playerCombat.isAttacking = false;
+        //playerCombat.isAttacking = false;
+        playerStats.gameObject.SetActive(false);
     }
 
     private void CheckRespawn()
@@ -69,15 +78,18 @@ public class GameManager : MonoBehaviour
             {
                 enemy.Respawn();
             }
-
+            playerStats.gameObject.SetActive(true);
             // Instanziere das Prefab
-            GameObject playerClone = Instantiate(player, checkPointManager.GetLastCheckpointPosition(), Quaternion.identity);
+            //GameObject playerClone = Instantiate(player, checkPointManager.GetLastCheckpointPosition(), Quaternion.identity);
+            playerStats.transform.position = checkPointManager.GetLastCheckpointPosition();
+            playerStats.ResetHealth();
+            
 
             // Stelle die ursprüngliche Skalierung des Spielers im Klon wieder her
-            playerClone.transform.localScale = originalPlayerScale;
+            //playerClone.transform.localScale = originalPlayerScale;
 
-            
-            cinemachineVirtualCamera.m_Follow = playerClone.transform;
+            //Time.timeScale = 1f;
+            cinemachineVirtualCamera.m_Follow = playerStats.transform;
             respawn = false;
 
         }
