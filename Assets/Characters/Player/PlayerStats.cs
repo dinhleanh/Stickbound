@@ -5,9 +5,9 @@ using UnityEngine;
 
 public class PlayerStats : MonoBehaviour
 {
-    [SerializeField] private float maxHealth;
+    [SerializeField] public float maxHealth;
 
-    private float currentHealth;
+    public float currentHealth;
 
 
 
