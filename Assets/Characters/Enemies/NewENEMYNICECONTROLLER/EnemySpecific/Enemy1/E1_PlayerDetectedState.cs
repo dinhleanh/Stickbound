@@ -7,6 +7,11 @@ public class E1_PlayerDetectedState : PlayerDetectedState
 {
     private Enemy1 enemy;
     private bool ground;
+    private bool ledge;
+
+
+
+
     public E1_PlayerDetectedState(Entity _entity, FiniteStateMachine _stateMachine, string _animBoolName, DataFor_PlayerDetectedState _stateData, Enemy1 _enemy) : base(_entity, _stateMachine, _animBoolName, _stateData)
     {
         this.enemy = _enemy;
@@ -28,30 +33,48 @@ public class E1_PlayerDetectedState : PlayerDetectedState
         base.LogicUpdate();
 
         ground = enemy.CheckGround();
-        if(performCloseRangeAction && !enemy.isHopping && ground)
+        ledge = enemy.CheckLedge();
+
+
+
+        if (!isDetectingLedge)
+
+        {
+            // HIER KANN MAN BUG BEHEBEN IN DEM DER GEGNER DEN SPIELER AUF DER ANDEREN SEITE DER PLATTFORM ERKENNT
+            
+            entity.Flip();
+
+            //stateMachine.ChangeState(enemy.idleState);
+            if (isDetectingPlayer)
+            {
+                entity.SetVelocity(0f);
+                stateMachine.ChangeState(enemy.moveState);
+                
+            }
+
+        }
+
+        else
+   if (performCloseRangeAction && !enemy.isHopping && ground)
         {
             stateMachine.ChangeState(enemy.meleeAttackState);
         }
         else
-        if (performLongRangeAction)
+   if (performLongRangeAction)
         {
             stateMachine.ChangeState(enemy.chargeState);
         }
         else
-        if (!isPlayerInMaxAgrorange)
+   if (!isPlayerInMaxAgrorange)
         {
             stateMachine.ChangeState(enemy.lookForPlayerState);
         }
-        else 
-        if(!isDetectingLedge)
-        {
-            // HIER KANN MAN BUG BEHEBEN IN DEM DER GEGNER DEN SPIELER AUF DER ANDEREN SEITE DER PLATTFORM ERKENNT
-
-            //entity.Flip();
-            //stateMachine.ChangeState(enemy.moveState);
-        }
-
     }
+
+
+
+
+
 
     public override void PhysicsUpdate()
     {
