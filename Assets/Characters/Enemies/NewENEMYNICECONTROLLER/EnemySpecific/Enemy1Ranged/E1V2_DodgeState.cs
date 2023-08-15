@@ -44,7 +44,7 @@ public class E1V2_DodgeState : DodgeState
                 stateMachine.ChangeState(enemy.lookForPlayerState);
             }
 
-            //TODO Ranged attack
+            
 
 
 
