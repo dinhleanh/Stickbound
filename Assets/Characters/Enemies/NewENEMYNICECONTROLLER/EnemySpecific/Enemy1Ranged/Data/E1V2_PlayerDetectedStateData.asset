@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff8c91f650e8ee5439159b179da22af8, type: 3}
   m_Name: E1V2_PlayerDetectedStateData
   m_EditorClassIdentifier: 
-  longRangeActionTime: 0.8
+  longRangeActionTime: 0.0002

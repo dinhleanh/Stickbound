@@ -83,6 +83,7 @@ public class Projectile : MonoBehaviour
                 hasHitGround = true;
                 rb.gravityScale = 0f;
                 rb.velocity = Vector2.zero;
+                Destroy(gameObject);
             }
 
 
@@ -105,6 +106,7 @@ public class Projectile : MonoBehaviour
         this.speed = speed;
         this.travelDistance = travelDistance;
         attackDetails.damageAmount = damage;
+        
     }
 
 
