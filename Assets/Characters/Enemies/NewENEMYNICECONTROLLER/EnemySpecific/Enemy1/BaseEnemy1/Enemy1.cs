@@ -120,6 +120,8 @@ public class Enemy1 : Entity
 
     }
 
+    
+
     public override void Respawn()
     {
         base.Respawn();

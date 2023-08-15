@@ -112,7 +112,7 @@ public class MovementPlayer : MonoBehaviour
 
 
     [Header("Dash - Soll der Spieler während Dash Jumpen dürfen?(Am Boden)")]
-    [SerializeField] private bool canDash = true;
+    [SerializeField] public bool canDash = true;
     [SerializeField] private bool isInDashCooldown = false;
     [SerializeField] public bool isDashing;
     [SerializeField] private float dashingPower = 35f;
@@ -322,6 +322,8 @@ public class MovementPlayer : MonoBehaviour
     void Update()
     {
 
+
+
         // Raycasts hier fehlt noch IsOnCeiling
         //IsGrounded = touchingCol.Cast(Vector2.down, CastFilter, groundHits, groundDistance) > 0;
 
@@ -355,21 +357,21 @@ public class MovementPlayer : MonoBehaviour
     {
 
         // !isONWALL BEEINTRÄCHTIGT DEN GEGNER BUG
-        if (!isDashing && !isInDashCooldown  && !IsGrappling && !IsInGrapplingCooldown && !knockback && !playerCombat.isAttacking)
+        if (!isDashing && !isInDashCooldown && !IsGrappling && !IsInGrapplingCooldown && !knockback && !playerCombat.isAttacking)
         {
-            
-            if(!IsGrounded && !knockback)
+
+            if (!IsGrounded && !knockback)
             {
-               
+
                 rb.velocity = new Vector2(moveVector.x * airMoveSpeed, rb.velocity.y); // Man könnte hier auch mit Forces Arbeiten!
             }
-            else if(!knockback)
+            else if (!knockback)
             {
-                
+
                 rb.velocity = new Vector2(moveVector.x * moveSpeed, rb.velocity.y); // Man könnte hier auch mit Forces Arbeiten!
-                
+
             }
-            
+
         }
         // kein Wall Slide oder Jump
         //else if (IsOnWall && !IsGrappling && !IsGrounded)
@@ -483,13 +485,13 @@ public class MovementPlayer : MonoBehaviour
 
         // For Animations
         //vorher mit  rb.velocity.x != 0f
-        if(rb.velocity.x != 0f && !isDashing && IsGrounded && !isInDashCooldown &&!IsOnWall && !knockback)
+        if (rb.velocity.x != 0f && !isDashing && IsGrounded && !isInDashCooldown && !IsOnWall && !knockback)
         {
             isWalking = true;
         }
         else
         {
-            isWalking=false;
+            isWalking = false;
         }
 
 
@@ -498,7 +500,7 @@ public class MovementPlayer : MonoBehaviour
     // Rotation nicht mit scale = -1 sondern rotation !!!
     private void Turn()
     {
-        if(!playerCombat.isAttacking)
+        if (!playerCombat.isAttacking)
         {
             if (IsFacingRight)
             {
@@ -530,20 +532,20 @@ public class MovementPlayer : MonoBehaviour
                 //_cameraFollowObject.CallTurn();
             }
         }
-            
-        
-            
-        
-            
-        
-        
+
+
+
+
+
+
+
     }
 
 
     #region try out animations
     private void IsMove()
     {
-        if(IsMoving && IsGrounded && !isDashing && !IsGrappling)
+        if (IsMoving && IsGrounded && !isDashing && !IsGrappling)
         {
             animator.SetBool("run", true);
         }
@@ -560,13 +562,13 @@ public class MovementPlayer : MonoBehaviour
 
     private void Idle()
     {
-        if(!IsMoving && IsGrounded && !isDashing && !IsGrappling)
+        if (!IsMoving && IsGrounded && !isDashing && !IsGrappling)
         {
             animator.SetBool("idle", true);
         }
         else
         {
-            animator.SetBool("idle", false) ;
+            animator.SetBool("idle", false);
         }
     }
 
@@ -813,7 +815,7 @@ public class MovementPlayer : MonoBehaviour
     }
 
 
-    Vector2 GetMousePositionAndReturnDirection()
+    public Vector2 GetMousePositionAndReturnDirection()
     {
 
 
@@ -823,6 +825,17 @@ public class MovementPlayer : MonoBehaviour
 
         Vector2 direction = (GetWorldPositionOnPlaneForMouse - rb.position).normalized; // Im tutorial (Vector2)transform.position statt rb.position
         return direction;
+    }
+
+    public Vector2 GetMousePosition()
+    {
+
+
+        //Vector2 mousePos = cam.ScreenToWorldPoint(Input.mousePosition);
+        Vector2 mousePos = Input.mousePosition;
+        Vector2 GetWorldPositionOnPlaneForMouse = GetWorldPositionOnPlane(mousePos, -1f);
+        return GetWorldPositionOnPlaneForMouse;
+
     }
 
     #endregion
@@ -861,15 +874,15 @@ public class MovementPlayer : MonoBehaviour
             RaycastHit2D falseHit = Physics2D.Raycast(rb.position, GetMousePositionAndReturnDirection(), maxGrappleLength, WhatYouShouldNotGrappleOnTo);
             RaycastHit2D hit = Physics2D.Raycast(rb.position, GetMousePositionAndReturnDirection(), maxGrappleLength, WhatYouCanGrappleOnTo);
 
-            if(hit.collider != null && falseHit.collider != null)
+            if (hit.collider != null && falseHit.collider != null)
             {
                 float distanceToHookable = Vector2.Distance(transform.position, hit.point);
                 float distanceToCancelHook = Vector2.Distance(transform.position, falseHit.point);
 
-                if(distanceToCancelHook< distanceToHookable)
+                if (distanceToCancelHook < distanceToHookable)
                 {
                     didGrappleHit = false;
-                    
+
                     return;
                 }
             }
@@ -905,7 +918,7 @@ public class MovementPlayer : MonoBehaviour
 
             float tempVelocityGrapple = moveSpeedFromGrapple;
 
-            if(moveTo.y < rb.position.y)
+            if (moveTo.y < rb.position.y)
             {
                 tempVelocityGrapple *= 1.1f;
             }
@@ -913,10 +926,10 @@ public class MovementPlayer : MonoBehaviour
             {
                 tempVelocityGrapple = moveSpeedFromGrapple;
             }
-            
+
             // Move Player To Grapple
             rb.MovePosition(Vector2.MoveTowards(rb.position, moveTo, tempVelocityGrapple));
-           
+
 
 
             //lineRenderer Shit
@@ -940,7 +953,7 @@ public class MovementPlayer : MonoBehaviour
             IsInGrapplingCooldown = true;
 
             Vector2 tempVector = rb.velocity;
-            
+
 
             // Vll hier noch einbauen was passiert wenn man die Tasten drückt nach dem Grappling Hook
             if (moveVector.x == 0f && didGrappleHit)
@@ -962,30 +975,30 @@ public class MovementPlayer : MonoBehaviour
                     tempVector = new Vector2(0, -60); // Für krassen Downfall Movement!
                 }
             }
-            else if(moveVector.x != 0f && didGrappleHit)
+            else if (moveVector.x != 0f && didGrappleHit)
             {
-                if(IsFacingRight && moveVector.x > 0f)
+                if (IsFacingRight && moveVector.x > 0f)
                 {
                     tempVector = new Vector2(30 * xVelocityAfterGrappleInfluencedByMouseDurationClamped, 0.4f);
                     xVelocityAfterGrappleInfluencedByMouseDuration = 0; // reset
                 }
-                else if(IsFacingRight && moveVector.x < 0f)
+                else if (IsFacingRight && moveVector.x < 0f)
                 {
                     tempVector = new Vector2((10 * xVelocityAfterGrappleInfluencedByMouseDurationClamped), 0.4f);
                     xVelocityAfterGrappleInfluencedByMouseDuration = 0;
                 }
-                else if(!IsFacingRight && moveVector.x > 0f)
+                else if (!IsFacingRight && moveVector.x > 0f)
                 {
                     tempVector = new Vector2(-(10 * xVelocityAfterGrappleInfluencedByMouseDurationClamped), 0.4f);
                     xVelocityAfterGrappleInfluencedByMouseDuration = 0; // reset
                 }
-                else if(!IsFacingRight && moveVector.x < 0f)
+                else if (!IsFacingRight && moveVector.x < 0f)
                 {
                     tempVector = new Vector2(-(30 * xVelocityAfterGrappleInfluencedByMouseDurationClamped), 0.4f);
                     xVelocityAfterGrappleInfluencedByMouseDuration = 0; // reset
                 }
-                    
-                
+
+
             }
 
             rb.velocity = tempVector;
@@ -1012,7 +1025,7 @@ public class MovementPlayer : MonoBehaviour
 
         yield return new WaitForSeconds(grappleCooldown);
         IsInGrapplingCooldown = false;
-        
+
         canGrapple = true;
     }
 
@@ -1042,14 +1055,14 @@ public class MovementPlayer : MonoBehaviour
         //canFlip = false;
     }
 
-    
+
 
 
     public void Knockback(int direction)
     {
         knockback = true;
         knockbackStartTime = Time.time;
-        rb.velocity = new Vector2(knockbackSpeed.x*direction, knockbackSpeed.y);
+        rb.velocity = new Vector2(knockbackSpeed.x * direction, knockbackSpeed.y);
 
     }
 
@@ -1057,14 +1070,14 @@ public class MovementPlayer : MonoBehaviour
     {
         knockback = true;
         knockbackStartTime = Time.time;
-        rb.velocity = new Vector2(0, 10*direction);
+        rb.velocity = new Vector2(0, 10 * direction);
     }
 
     private void CheckKnockback()
     {
-        if(Time.time >= knockbackStartTime+knockbackDuration && knockback) 
+        if (Time.time >= knockbackStartTime + knockbackDuration && knockback)
         {
-            
+
             rb.velocity = new Vector2(0.0f, rb.velocity.y);
             knockback = false;
         }
@@ -1079,10 +1092,30 @@ public class MovementPlayer : MonoBehaviour
     {
         if (playerCombat.isAttacking && IsGrounded)
         {
-            rb.velocity = new Vector2(0.0f,rb.velocity.y);
+            rb.velocity = new Vector2(0.0f, rb.velocity.y);
         }
     }
 
+    public bool IsInGrappleRange()
+    {
+
+        //Vector2 mousePos = cam.ScreenToWorldPoint(Input.mousePosition);
+        Vector2 mousePos = Input.mousePosition;
+        Vector2 GetWorldPositionOnPlaneForMouse = GetWorldPositionOnPlane(mousePos, -1f);
+
+        float distanceToMouse = Vector2.Distance(transform.position, GetWorldPositionOnPlaneForMouse);
+
+
+
+        if (distanceToMouse <= maxGrappleLength)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
 
     // fix für perspective camera
 
@@ -1095,4 +1128,10 @@ public class MovementPlayer : MonoBehaviour
         return ray.GetPoint(distance);
     }
 
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawWireSphere(transform.position, maxGrappleLength);
+    }
 }

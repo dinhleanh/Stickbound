@@ -86,6 +86,10 @@ public class Entity : MonoBehaviour
     public virtual void Update()
     {
         stateMachine.currentState.LogicUpdate();
+
+
+        anim.SetFloat("yVelocity", rb.velocity.y);
+
         
         if (Time.time >= lastDamageTime + entityData.stunRecoveryTime)
         {
@@ -198,6 +202,10 @@ public class Entity : MonoBehaviour
 
     }
 
+    
+
+
+
     public virtual void Respawn()
     {
         if(gameManager.respawn && aliveGO.activeInHierarchy == false)
@@ -230,9 +238,6 @@ public class Entity : MonoBehaviour
         Gizmos.DrawWireSphere(playerCheck.position + (Vector3)(Vector2.right * facingDirection * entityData.maxAgroDistance), 0.2f);
 
         
-
-
-
     }
 
 

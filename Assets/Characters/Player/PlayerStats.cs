@@ -5,9 +5,9 @@ using UnityEngine;
 
 public class PlayerStats : MonoBehaviour
 {
-    [SerializeField] private float maxHealth;
+    [SerializeField] public float maxHealth;
 
-    private float currentHealth;
+    public float currentHealth;
 
 
 
@@ -23,7 +23,22 @@ public class PlayerStats : MonoBehaviour
         gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
     }
 
-   
+    private void Update()
+    {
+        ClampHealth();
+       // Debug.Log(currentHealth);
+
+    }
+
+
+    private void ClampHealth()
+    {
+        currentHealth = Mathf.Clamp(currentHealth, 0, maxHealth);
+    }
+
+
+
+
     public void DecreaseHealth(float amount)
     {
         
@@ -36,6 +51,11 @@ public class PlayerStats : MonoBehaviour
         }
     }
 
+    public void ResetHealth()
+    {
+        currentHealth = maxHealth;
+    }
+
     private void Die()
     {
         //int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
@@ -43,7 +63,14 @@ public class PlayerStats : MonoBehaviour
         //SceneManager.LoadScene(currentSceneIndex, LoadSceneMode.Single);
         //transform.position = new Vector3(1, 1, 1);
         gameManager.Respawn();
-        gameObject.SetActive(false);
+        //gameObject.SetActive(false);
         //Destroy(gameObject);
     }
+
+    public float ShowCurrentHealth()
+    {
+       
+        return currentHealth;
+    }
+
 }
