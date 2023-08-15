@@ -31,7 +31,8 @@ public class Entity : MonoBehaviour
     [SerializeField]
     private Transform groundCheck;
 
-
+    [SerializeField]
+    private Transform playerBehindCheck;
 
     public bool isHopping = false;
 
@@ -154,6 +155,11 @@ public class Entity : MonoBehaviour
     public virtual bool CheckPlayerInCloseRangeAction()
     {
         return Physics2D.Raycast(playerCheck.position,aliveGO.transform.right,entityData.closeRangeActionDistance,entityData.whatIsPlayer);
+    }
+    
+    public virtual bool CheckPlayerBehind()
+    {
+        return Physics2D.Raycast(playerBehindCheck.position, aliveGO.transform.right * -1, entityData.playerBehindCheckDistance, entityData.whatIsPlayer);
     }
 
     public virtual void ResetStunResistance()

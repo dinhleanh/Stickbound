@@ -16,14 +16,16 @@ public class DataFor_Entity : ScriptableObject
     public float groundCheckRadius = 0.3f;
 
     public float minAgroDistance = 3f;
-    public float maxAgroDistance = 4f;
+    public float maxAgroDistance = 6f;
+
+    public float playerBehindCheckDistance = 3f;
 
     public float stunResistance = 3f;
     public float stunRecoveryTime = 2f;
 
     public float closeRangeActionDistance = 1f;
 
-    
+
 
 
     public GameObject hitParticle;
