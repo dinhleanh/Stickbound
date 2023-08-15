@@ -100,7 +100,6 @@ Transform:
   - {fileID: 6767311976690629653}
   - {fileID: 6767311975479890365}
   - {fileID: 6767311975994449971}
-  - {fileID: 8456068270426284049}
   m_Father: {fileID: 6767311976986652903}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -379,7 +378,6 @@ MonoBehaviour:
   ledgeCheck: {fileID: 6767311975308937780}
   playerCheck: {fileID: 6767311976690629653}
   groundCheck: {fileID: 6767311975994449971}
-  playerBehindCheck: {fileID: 8456068270426284049}
   isHopping: 0
   currentHealth: 0
   idleStateData: {fileID: 11400000, guid: 0df64075a3c42b742ac20fd212122d0f, type: 2}
@@ -391,34 +389,3 @@ MonoBehaviour:
   stunStateData: {fileID: 11400000, guid: 441c2537a574d6940bf95a0f21cf4aed, type: 2}
   deadStateData: {fileID: 11400000, guid: 9b1b55b8ba505504c9886a3c852a5ac0, type: 2}
   meleeAttackPosition: {fileID: 6767311975479890365}
---- !u!1 &9093652893952529562
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 8456068270426284049}
-  m_Layer: 7
-  m_Name: PlayerBehindCheck
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &8456068270426284049
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9093652893952529562}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 6767311975681585691}
-  m_RootOrder: 5
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
