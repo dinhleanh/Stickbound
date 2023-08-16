@@ -79,7 +79,9 @@ public class Enemy1Ranged : Entity
         dodgeState = new E1V2_DodgeState(this,stateMachine,"dodge",dodgeStateData, this);
         rangedAttackState = new E1V2_RangedAttackState(this, stateMachine, "rangedAttack", rangedAttackPosition, rangedAttackStateData, this);
 
+       
         stateMachine.Initialize(moveState);
+
     }
 
     public override void Damage(AttackDetails attackDetails)
@@ -109,6 +111,9 @@ public class Enemy1Ranged : Entity
     public override void Respawn()
     {
         base.Respawn();
+
+        Debug.Log(StartPos.position);
+        
     }
 
     public override void OnDrawGizmos()

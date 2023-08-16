@@ -4,6 +4,7 @@ using System.Runtime.CompilerServices;
 using Unity.VisualScripting;
 //using UnityEditor.U2D.Path;
 using UnityEngine;
+//using static UnityEngine.RuleTile.TilingRuleOutput;
 
 public class Entity : MonoBehaviour
 {
@@ -17,6 +18,8 @@ public class Entity : MonoBehaviour
     public Rigidbody2D rb { get; private set; }
     public Animator anim { get; private set; }
     public GameObject aliveGO { get; private set; }
+
+    
 
     public AnimationToStateMachine atsm { get; private set; }
 
@@ -33,6 +36,8 @@ public class Entity : MonoBehaviour
 
     [SerializeField]
     private Transform playerBehindCheck;
+
+    protected Transform StartPos;
 
 
 
@@ -81,9 +86,11 @@ public class Entity : MonoBehaviour
         rb = aliveGO.GetComponent<Rigidbody2D>(); 
         anim = aliveGO.GetComponent <Animator>();
         atsm = aliveGO.GetComponent<AnimationToStateMachine>();
-        
+        StartPos = aliveGO.GetComponent<Transform>();
 
-        stateMachine = new FiniteStateMachine();
+        StartPos.position = aliveGO.transform.position;
+
+    stateMachine = new FiniteStateMachine();
     }
 
     public virtual void Update()
@@ -219,7 +226,9 @@ public class Entity : MonoBehaviour
         if(gameManager.respawn && aliveGO.activeInHierarchy == false)
         {
             isDead = false;
+           aliveGO.transform.position = StartPos.transform.position;
             aliveGO.SetActive(true);
+            //aliveGO.transform.position = StartPos.position;
             currentHealth = entityData.maxHealth;
             currentStunResistance = entityData.stunResistance;
         }

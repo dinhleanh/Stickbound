@@ -126,5 +126,6 @@ public class Enemy1 : Entity
     {
         base.Respawn();
         stateMachine.Initialize(moveState);
+        
     }
 }
