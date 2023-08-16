@@ -31,6 +31,9 @@ public class Entity : MonoBehaviour
     [SerializeField]
     private Transform groundCheck;
 
+    [SerializeField]
+    private Transform playerBehindCheck;
+
 
 
     public bool isHopping = false;
@@ -86,6 +89,10 @@ public class Entity : MonoBehaviour
     public virtual void Update()
     {
         stateMachine.currentState.LogicUpdate();
+
+
+        anim.SetFloat("yVelocity", rb.velocity.y);
+
         
         if (Time.time >= lastDamageTime + entityData.stunRecoveryTime)
         {
@@ -152,6 +159,11 @@ public class Entity : MonoBehaviour
         return Physics2D.Raycast(playerCheck.position,aliveGO.transform.right,entityData.closeRangeActionDistance,entityData.whatIsPlayer);
     }
 
+    public virtual bool CheckPlayerBehind()
+    {
+        return Physics2D.Raycast(playerBehindCheck.position, aliveGO.transform.right *-1, entityData.playerBehindCheckDistance, entityData.whatIsPlayer);
+    }
+
     public virtual void ResetStunResistance()
     {
         isStunned = false;
@@ -198,6 +210,10 @@ public class Entity : MonoBehaviour
 
     }
 
+    
+
+
+
     public virtual void Respawn()
     {
         if(gameManager.respawn && aliveGO.activeInHierarchy == false)
@@ -224,15 +240,13 @@ public class Entity : MonoBehaviour
     {
         Gizmos.DrawLine(wallCheck.position, wallCheck.position + (Vector3)(Vector2.right * facingDirection*entityData.wallCheckDistance));
         Gizmos.DrawLine(ledgeCheck.position, ledgeCheck.position + (Vector3)(Vector2.down  * entityData.ledgeCheckDistance));
+        Gizmos.DrawLine(playerBehindCheck.position, playerBehindCheck.position + (Vector3)(Vector2.left * facingDirection * entityData.playerBehindCheckDistance));
 
         Gizmos.DrawWireSphere(playerCheck.position + (Vector3)(Vector2.right * facingDirection * entityData.closeRangeActionDistance),0.2f);
         Gizmos.DrawWireSphere(playerCheck.position + (Vector3)(Vector2.right * facingDirection * entityData.minAgroDistance), 0.2f);
         Gizmos.DrawWireSphere(playerCheck.position + (Vector3)(Vector2.right * facingDirection * entityData.maxAgroDistance), 0.2f);
 
         
-
-
-
     }
 
 
