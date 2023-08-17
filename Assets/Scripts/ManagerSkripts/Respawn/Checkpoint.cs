@@ -5,6 +5,8 @@ public class Checkpoint : MonoBehaviour
     private CheckPointManager checkpointManager;
     private bool isReached = false;
 
+    public Sprite[] sprites;
+
     private SpriteRenderer spriteRenderer;
 
     private void Start()
@@ -18,6 +20,7 @@ public class Checkpoint : MonoBehaviour
     {
         if (other.CompareTag("Player") && !isReached)
         {
+            spriteRenderer.sprite = sprites[0];
             spriteRenderer.color = Color.yellow;
             checkpointManager.SetLastCheckpoint(this);
             isReached = true;

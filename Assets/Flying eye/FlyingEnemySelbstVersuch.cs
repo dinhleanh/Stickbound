@@ -165,6 +165,7 @@ public class FlyingEnemySelbstVersuch : MonoBehaviour
     {
         aliveV2.SetActive(true);
         currentHealth = maxHealth;
+        Patrol();
         isDead = false;
     }
 

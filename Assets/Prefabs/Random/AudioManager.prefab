@@ -47,7 +47,13 @@ MonoBehaviour:
   sounds:
   - nameOfSoundClip: Theme
     clip: {fileID: 8300000, guid: b870e53d566c1e94a817cb9a14fee1e5, type: 3}
-    volume: 0.098
+    volume: 0.045
     pitch: 1
     loop: 1
+    source: {fileID: 0}
+  - nameOfSoundClip: PlayerAttack
+    clip: {fileID: 8300000, guid: eb5820e74e7d6834aa653663278befcf, type: 3}
+    volume: 0.233
+    pitch: 1
+    loop: 0
     source: {fileID: 0}

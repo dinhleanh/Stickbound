@@ -106,13 +106,14 @@ public class PlayerCombatTry : MonoBehaviour
     {
         Collider2D[] detectedObjects = Physics2D.OverlapCircleAll(attack1HitBoxPos.position,attack1Radius,whatIsDamageable);
 
-        
+        FindObjectOfType<AudioManager>().PlaySound("PlayerAttack");
 
         attackDetails.damageAmount = attack1Damage;
         attackDetails.position = transform.position;
 
         foreach (Collider2D collider in detectedObjects)
         {
+            
             collider.transform.parent.SendMessage("Damage", attackDetails);
             //Instantiate hit particles kann aucg in enemy passieren - unterschieldich pro enemy
         }

@@ -111,7 +111,7 @@ public class Enemy1Ranged : Entity
     public override void Respawn()
     {
         base.Respawn();
-
+        stateMachine.Initialize(moveState);
         Debug.Log(StartPos.position);
         
     }

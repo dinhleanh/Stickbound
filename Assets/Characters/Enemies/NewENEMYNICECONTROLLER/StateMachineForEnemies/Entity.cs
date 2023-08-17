@@ -226,9 +226,11 @@ public class Entity : MonoBehaviour
         if(gameManager.respawn && aliveGO.activeInHierarchy == false)
         {
             isDead = false;
-           aliveGO.transform.position = StartPos.transform.position;
-            aliveGO.SetActive(true);
             //aliveGO.transform.position = StartPos.position;
+            aliveGO.SetActive(true);
+            
+            //aliveGO.transform.position = StartPos.position;
+
             currentHealth = entityData.maxHealth;
             currentStunResistance = entityData.stunResistance;
         }

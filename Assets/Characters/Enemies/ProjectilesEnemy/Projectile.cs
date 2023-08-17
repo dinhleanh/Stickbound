@@ -91,8 +91,9 @@ public class Projectile : MonoBehaviour
 
             if (Mathf.Abs(xStartPos - transform.position.x) >= travelDistance && !isGravityOn)
             {
-                isGravityOn = true;
-                rb.gravityScale = gravity;
+                Destroy(gameObject);
+                //isGravityOn = true;
+                //rb.gravityScale = gravity;
             }
         }
 

@@ -367,7 +367,7 @@ public class MovementPlayer : MonoBehaviour
             }
             else if (!knockback)
             {
-
+                
                 rb.velocity = new Vector2(moveVector.x * moveSpeed, rb.velocity.y); // Man könnte hier auch mit Forces Arbeiten!
 
             }
@@ -587,6 +587,7 @@ public class MovementPlayer : MonoBehaviour
         moveVector = context.ReadValue<Vector2>();
         if (context.performed)
         {
+            
             IsMoving = true;
             IsInGrapplingCooldown = false; // Cancel GH when Moving
         }

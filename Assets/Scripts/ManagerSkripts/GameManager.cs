@@ -33,6 +33,8 @@ public class GameManager : MonoBehaviour
 
     public List <Enemy1Ranged> enemyRangedRespawner;
 
+    public List <FlyingEnemySelbstVersuch> flyingEnemySelbstVersuch;
+
 
 
 
@@ -82,6 +84,11 @@ public class GameManager : MonoBehaviour
             }
 
             foreach (Enemy1Ranged enemy in enemyRangedRespawner)
+            {
+                enemy.Respawn();
+            }
+
+            foreach (FlyingEnemySelbstVersuch enemy in flyingEnemySelbstVersuch)
             {
                 enemy.Respawn();
             }
