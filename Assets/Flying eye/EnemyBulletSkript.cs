@@ -6,9 +6,10 @@ public class EnemyBulletSkript : MonoBehaviour
 {
     private GameObject player;
     private Rigidbody2D rb;
+    private PlayerStats playerStats;
 
     public float force;
-
+    public float bulletDamage = 10f;
     private float timer;
 
 
@@ -17,6 +18,7 @@ public class EnemyBulletSkript : MonoBehaviour
     {
         player = GameObject.FindGameObjectWithTag("Player");
         rb = GetComponent<Rigidbody2D>();
+        playerStats = player.GetComponent<PlayerStats>();
 
         Vector3 direction = player.transform.position - transform.position;
         rb.velocity = new Vector2(direction.x, direction.y).normalized * force;
@@ -38,7 +40,12 @@ public class EnemyBulletSkript : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("Player")|| collision.gameObject.CompareTag("Ground"))
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            playerStats.DecreaseHealth(bulletDamage);
+            Destroy(gameObject);
+        }
+        else if (collision.gameObject.CompareTag("Ground"))
         {
             Destroy(gameObject);
         }

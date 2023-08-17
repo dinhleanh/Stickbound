@@ -18,6 +18,7 @@ public class FlyingEnemySelbstVersuch : MonoBehaviour
     private int currentPointIndex = 0;
     private Rigidbody2D rb;
     private GameObject player;
+    private PlayerStats playerStats;
     public LayerMask WhatIsPlayer;
     public LayerMask WhatIsGround;
     public float ShootingRange = 7f;
@@ -33,15 +34,20 @@ public class FlyingEnemySelbstVersuch : MonoBehaviour
         aliveV2 = transform.Find("AliveV2").gameObject;
         rb = aliveV2.GetComponent<Rigidbody2D>();
         player = GameObject.FindGameObjectWithTag("Player");
+        playerStats = player.GetComponent<PlayerStats>();
         currentHealth = maxHealth;
     }
 
     private void Update()
     {
         timeSinceLastShot += Time.deltaTime;
-        MoveAndShoot();
+        if(playerStats.currentHealth > 0f)
+        {
+            MoveAndShoot();
+        }
+        //MoveAndShoot();
         //Die();
-        isDead = false;
+        //isDead = false;
         
     }
 
@@ -159,12 +165,13 @@ public class FlyingEnemySelbstVersuch : MonoBehaviour
     {
         aliveV2.SetActive(true);
         currentHealth = maxHealth;
+        isDead = false;
     }
 
     public void Damage (AttackDetails details)
     {
         currentHealth -= details.damageAmount;
-
+        
         if(currentHealth <= 0)
         {
             Die();

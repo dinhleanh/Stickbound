@@ -1070,7 +1070,7 @@ public class MovementPlayer : MonoBehaviour
     {
         knockback = true;
         knockbackStartTime = Time.time;
-        rb.velocity = new Vector2(0, 10 * direction);
+        rb.velocity = new Vector2(0f, 10 * direction);
     }
 
     private void CheckKnockback()
