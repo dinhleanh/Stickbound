@@ -22,6 +22,7 @@ public class Checkpoint : MonoBehaviour
         {
             spriteRenderer.sprite = sprites[0];
             spriteRenderer.color = Color.yellow;
+            FindObjectOfType<AudioManager>().PlaySound("CheckPointAberEigDash");
             checkpointManager.SetLastCheckpoint(this);
             isReached = true;
             // Weitere Aktionen, z.B. Aktivieren des Checkpoint-Sprites

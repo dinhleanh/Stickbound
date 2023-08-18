@@ -5,7 +5,7 @@ using UnityEngine;
 public class AudioManager : MonoBehaviour
 {
     // Einfügen von Sound in anderen Skripten:
-    // FindObjectOfType<AudioManager>().Play("hierDenStringDesAudioClips");
+    // FindObjectOfType<AudioManager>().PlaySound("hierDenStringDesAudioClips");
 
 
     public Sound[] sounds;
