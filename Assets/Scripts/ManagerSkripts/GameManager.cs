@@ -98,6 +98,13 @@ public class GameManager : MonoBehaviour
             // Instanziere das Prefab
             //GameObject playerClone = Instantiate(player, checkPointManager.GetLastCheckpointPosition(), Quaternion.identity);
             playerStats.transform.position = checkPointManager.GetLastCheckpointPosition();
+            
+            playerMove.IsGrappling = false;
+            playerMove.isDashing = false;
+            playerMove.canDash = true;
+            playerMove.canGrapple = true;
+            playerMove.didGrappleHit = false;
+            playerCombat.isAttacking = false;
             playerStats.ResetHealth();
             
 

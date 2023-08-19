@@ -112,7 +112,7 @@ public class Enemy1Ranged : Entity
     {
         base.Respawn();
         stateMachine.Initialize(moveState);
-        Debug.Log(StartPos.position);
+        //Debug.Log(StartPos.position);
         
     }
 
