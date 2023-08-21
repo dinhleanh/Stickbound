@@ -39,12 +39,7 @@ public class MovementPlayer : MonoBehaviour
 
 
     private PlayerCombatTry playerCombat;
-
-
-
-
-
-
+    private PlayerStats playerStats;
 
 
 
@@ -105,7 +100,7 @@ public class MovementPlayer : MonoBehaviour
     [SerializeField] private float coyoteTimeCounter;
 
     [Header("Jump Buffering - Funkt nicht bei kleinen Jumps")]
-    [SerializeField] private float jumpBufferTime = 0.35f;
+    [SerializeField] private float jumpBufferTime = 0f;
     [SerializeField] private float jumpBufferTimeCounter;
 
 
@@ -292,6 +287,7 @@ public class MovementPlayer : MonoBehaviour
         tr = GetComponent<TrailRenderer>();
         lineRenderer = GetComponent<LineRenderer>();
         playerCombat = GetComponent<PlayerCombatTry>();
+        playerStats = GetComponent<PlayerStats>();
 
         lineRenderer.positionCount = 0; // no lines showing nur für grapplemechanik
 
@@ -394,8 +390,13 @@ public class MovementPlayer : MonoBehaviour
 
 
     #region Management
+
+
     private void AdjustGravity()
     {
+
+
+
         // Adjust Gravity when falling
         if (rb.velocity.y <= 0)
         {
@@ -424,6 +425,10 @@ public class MovementPlayer : MonoBehaviour
         }
 
 
+
+
+
+
     }
 
     private void AdjustCameraYDamping()
@@ -444,7 +449,7 @@ public class MovementPlayer : MonoBehaviour
         }
     }
 
-    
+
 
     private void SetFacingDirection(Vector2 _moveVector)
     {
@@ -491,25 +496,28 @@ public class MovementPlayer : MonoBehaviour
             }
 
             else
-
-
+            if (!playerCombat.isAttacking)
+            {
                 //normal check
                 if (_moveVector.x > 0 && !IsFacingRight)
-            {
-                Turn();
-                //IsFacingRight = true;
+                {
+                    Turn();
+                    //IsFacingRight = true;
+                }
+                else if (_moveVector.x < 0 && IsFacingRight)
+                {
+                    Turn();
+                    //IsFacingRight = false;
+                }
             }
-            else if (_moveVector.x < 0 && IsFacingRight)
-            {
-                Turn();
-                //IsFacingRight = false;
-            }
-        }
-
-        
 
             
-        
+        }
+
+
+
+
+
 
         // For Animations
         //vorher mit  rb.velocity.x != 0f
@@ -529,8 +537,8 @@ public class MovementPlayer : MonoBehaviour
     // Rotation nicht mit scale = -1 sondern rotation !!!
     private void Turn()
     {
-        if (!playerCombat.isAttacking)
-        {
+        
+        
             if (IsFacingRight)
             {
                 Vector3 rotator = new Vector3(transform.rotation.x, 180f, transform.rotation.z);
@@ -560,7 +568,7 @@ public class MovementPlayer : MonoBehaviour
 
                 //_cameraFollowObject.CallTurn();
             }
-        }
+        
 
 
 
@@ -654,6 +662,8 @@ public class MovementPlayer : MonoBehaviour
     }
 
 
+
+
     // wenn jump buffer end merken wie lange jump gedrückt
     // aufschreiben 
     // dann Variablen WAs Jump High und Was Jump low? 
@@ -684,9 +694,13 @@ public class MovementPlayer : MonoBehaviour
         }
 
         // longer time in air vll nícht relevant! wird wshl iwo überschrieben!
-        if (rb.velocity.y.Equals(0) && !isDashing)
+        if (rb.velocity.y.Equals(0))
         {
+
             rb.gravityScale = 0f;
+
+            //Debug.Log("flying");
+
         }
 
 
@@ -711,6 +725,8 @@ public class MovementPlayer : MonoBehaviour
 
 
         }
+
+
     }
     #endregion
 
@@ -803,7 +819,7 @@ public class MovementPlayer : MonoBehaviour
 
         IsMoving = false;
         rb.velocity = tempVector;
-        
+
         yield return new WaitForSeconds(dashingCooldown);
         canDash = true;
     }
@@ -837,12 +853,15 @@ public class MovementPlayer : MonoBehaviour
         {
             mouseClickDuration += Time.deltaTime;
             // Hier kannst du während des Klicks weitere Aktionen ausführen
-            if(canGrapple)
-            {
-                xVelocityAfterGrappleInfluencedByMouseDuration += Time.deltaTime;
-                xVelocityAfterGrappleInfluencedByMouseDurationClamped = Mathf.Clamp(xVelocityAfterGrappleInfluencedByMouseDuration, 0f, 0.5f);
-            }
-            
+
+            xVelocityAfterGrappleInfluencedByMouseDuration += Time.deltaTime;
+            xVelocityAfterGrappleInfluencedByMouseDurationClamped = Mathf.Clamp(xVelocityAfterGrappleInfluencedByMouseDuration, 0f, 0.5f);
+
+
+
+
+
+
             //Debug.Log("Maustaste wurde geclamped"+ xVelocityAfterGrappleInfluencedByMouseDurationClamped);
         }
 
@@ -886,33 +905,7 @@ public class MovementPlayer : MonoBehaviour
 
 
 
-    // WOLLEN WIR DELAY HABEN BEI GRAPPLE?
-    private IEnumerator ThrowGrapple()
-    {
 
-
-        
-
-
-
-
-        yield return new WaitForSeconds(0f);
-
-
-        // Move Player To Grapple
-        float tempVelocityGrapple = moveSpeedFromGrapple;
-
-        if (moveTo.y < rb.position.y)
-        {
-            tempVelocityGrapple *= 1.1f;
-        }
-        else
-        {
-            tempVelocityGrapple = moveSpeedFromGrapple;
-        }
-
-        rb.MovePosition(Vector2.MoveTowards(rb.position, moveTo, tempVelocityGrapple));
-    }
 
 
 
@@ -998,19 +991,31 @@ public class MovementPlayer : MonoBehaviour
 
 
 
+            // Move Player To Grapple
+            float tempVelocityGrapple = moveSpeedFromGrapple;
+
+            if (moveTo.y < rb.position.y)
+            {
+                tempVelocityGrapple *= 1.1f;
+            }
+            else
+            {
+                tempVelocityGrapple = moveSpeedFromGrapple;
+            }
+
+            rb.MovePosition(Vector2.MoveTowards(rb.position, moveTo, tempVelocityGrapple));
 
 
 
 
-            
-            StartCoroutine(ThrowGrapple());
 
 
 
-           
 
 
-           
+
+
+
             if (Input.GetMouseButtonUp(1) && IsGrappling)
             {
 
@@ -1022,6 +1027,7 @@ public class MovementPlayer : MonoBehaviour
                 Vector2 tempVector = rb.velocity;
 
 
+
                 // Vll hier noch einbauen was passiert wenn man die Tasten drückt nach dem Grappling Hook
                 if (moveVector.x == 0f && didGrappleHit)
                 {
@@ -1029,6 +1035,7 @@ public class MovementPlayer : MonoBehaviour
                     //Debug.Log(xVelocityAfterGrappleInfluencedByMouseDurationClamped);
                     if (rb.position.y < moveTo.y && IsFacingRight)
                     {
+
                         tempVector = new Vector2(20 * xVelocityAfterGrappleInfluencedByMouseDurationClamped, 0.4f);
                         xVelocityAfterGrappleInfluencedByMouseDuration = 0; // reset
                     }
@@ -1044,6 +1051,7 @@ public class MovementPlayer : MonoBehaviour
                 }
                 else if (moveVector.x != 0f && didGrappleHit)
                 {
+
                     if (IsFacingRight && moveVector.x > 0f)
                     {
                         tempVector = new Vector2(30 * xVelocityAfterGrappleInfluencedByMouseDurationClamped, 0.4f);
@@ -1064,9 +1072,15 @@ public class MovementPlayer : MonoBehaviour
                         tempVector = new Vector2(-(30 * xVelocityAfterGrappleInfluencedByMouseDurationClamped), 0.4f);
                         xVelocityAfterGrappleInfluencedByMouseDuration = 0; // reset
                     }
-
-
                 }
+
+
+
+
+
+
+
+
 
                 rb.velocity = tempVector;
 
@@ -1081,10 +1095,12 @@ public class MovementPlayer : MonoBehaviour
 
             else if (isDashing && IsGrappling)
             {
+                Debug.Log("det");
                 IsGrappling = false;
-                Detatch();
+                
                 IsInGrapplingCooldown = true;
                 StartCoroutine(GrappleCooldown());
+                Detatch();
                 StartCoroutine(DashingAbility());
 
             }
@@ -1093,10 +1109,12 @@ public class MovementPlayer : MonoBehaviour
 
 
 
+
+
         }
 
 
-        
+
 
     }
 
@@ -1147,9 +1165,13 @@ public class MovementPlayer : MonoBehaviour
 
     public void Knockback(int direction)
     {
-        knockback = true;
-        knockbackStartTime = Time.time;
-        rb.velocity = new Vector2(knockbackSpeed.x * direction, knockbackSpeed.y);
+        
+        
+            knockback = true;
+            knockbackStartTime = Time.time;
+            rb.velocity = new Vector2(knockbackSpeed.x * direction, knockbackSpeed.y);
+        
+       
 
     }
 
@@ -1177,16 +1199,16 @@ public class MovementPlayer : MonoBehaviour
 
     private void CombatStopMove()
     {
-        if (playerCombat.isAttacking && IsGrounded &&!isDashing)
+        if (playerCombat.isAttacking && IsGrounded && !isDashing)
         {
             rb.velocity = new Vector2(0.0f, rb.velocity.y);
         }
-        else if((playerCombat.isAttacking && !IsGrounded && !isDashing))
+        else if ((playerCombat.isAttacking && !IsGrounded && !isDashing))
         {
             rb.velocity = new Vector2(airMoveSpeed * moveVector.x, rb.velocity.y);
         }
-        
-        
+
+
     }
 
     public bool IsInGrappleRange()

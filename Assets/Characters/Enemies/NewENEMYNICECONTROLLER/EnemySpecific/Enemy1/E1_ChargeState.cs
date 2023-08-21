@@ -30,6 +30,7 @@ public class E1_ChargeState : ChargeState
     public override void LogicUpdate()
     {
         base.LogicUpdate();
+        
         ground = enemy.CheckGround();
         if (performCloseRangeAction && !enemy.isHopping && ground)
         {

@@ -24,8 +24,8 @@ public class E1_MoveState : MoveState
     public override void LogicUpdate()
     {
         base.LogicUpdate();
-
-        if(entity.CheckPlayerBehind())
+        
+        if (entity.CheckPlayerBehind())
         {
             entity.Flip();
         }

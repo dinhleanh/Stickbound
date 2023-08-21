@@ -9,13 +9,13 @@ public class PlayerStats : MonoBehaviour
 
     public float currentHealth;
 
-
+    
 
     private GameManager gameManager;
 
 
-
-
+    public float invulnerabilityDuration = 2.0f; // Dauer der Unverwundbarkeit in Sekunden
+    public bool isInvulnerable = false;
 
     private void Start()
     {
@@ -41,13 +41,20 @@ public class PlayerStats : MonoBehaviour
 
     public void DecreaseHealth(float amount)
     {
-        
-        currentHealth -= amount;
-        Debug.Log(currentHealth);
 
-        if (currentHealth <= 0.0f)
+        if (!isInvulnerable)
         {
-            Die();
+            currentHealth -= amount;
+            Debug.Log("Current Health: " + currentHealth);
+
+            if (currentHealth <= 0.0f)
+            {
+                Die();
+            }
+            else
+            {
+                StartInvulnerability();
+            }
         }
     }
 
@@ -65,6 +72,18 @@ public class PlayerStats : MonoBehaviour
         gameManager.Respawn();
         //gameObject.SetActive(false);
         //Destroy(gameObject);
+    }
+
+    private void StartInvulnerability()
+    {
+        isInvulnerable = true;
+        
+        Invoke("EndInvulnerability", invulnerabilityDuration);
+    }
+
+    private void EndInvulnerability()
+    {
+        isInvulnerable = false;
     }
 
     public float ShowCurrentHealth()

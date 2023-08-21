@@ -146,8 +146,10 @@ public class PlayerCombatTry : MonoBehaviour
             {
                 direction = -1;
             }
-
-            PL.Knockback(direction);
+            
+                PL.Knockback(direction);
+            
+            
         }
             
         
