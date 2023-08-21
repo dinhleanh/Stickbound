@@ -90,6 +90,7 @@ public class GameManager : MonoBehaviour
                 enemy.Respawn();
 
             }
+
             //for (int i = 0; i < enemyRespawner.Count; i++)
             //{
             //    enemyRespawner[i].transform.position = enemyTransform[i].position;
