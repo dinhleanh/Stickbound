@@ -76,6 +76,7 @@ public class PlayerStats : MonoBehaviour
 
     private void StartInvulnerability()
     {
+        
         isInvulnerable = true;
         
         Invoke("EndInvulnerability", invulnerabilityDuration);

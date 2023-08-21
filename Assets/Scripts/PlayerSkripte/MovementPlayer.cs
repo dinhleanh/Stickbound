@@ -469,8 +469,7 @@ public class MovementPlayer : MonoBehaviour
             {
                 Turn();
             }
-            Debug.Log("t" + rb.transform.position.x);
-            Debug.Log("m" + mouse.x);
+            
         }
         else
         {

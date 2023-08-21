@@ -30,11 +30,11 @@ public class E1V2_MoveState : MoveState
     {
         base.LogicUpdate();
 
-        //if (entity.CheckPlayerBehind())
-        //{
-        //    entity.Flip();
-        //}
-
+        if (entity.CheckPlayerBehind())
+        {
+            entity.Flip();
+        }
+        else
         if (isPlayerInMinAgrorange)
         {
             stateMachine.ChangeState(enemy.playerDetectedState);

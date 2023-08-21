@@ -7,9 +7,9 @@ public class GameManager : MonoBehaviour
 {
 
     public CheckPointManager checkPointManager;
-    
+
     //public Transform respawnPoint;
-    
+
     [SerializeField]
     private PlayerStats playerStats;
     [SerializeField]
@@ -29,13 +29,14 @@ public class GameManager : MonoBehaviour
 
 
 
-   public  List <Enemy1> enemyRespawner;
+    public List<Enemy1> enemyRespawner;
+    //private List<Transform> enemyTransform;
 
-    public List <Enemy1Ranged> enemyRangedRespawner;
+    public List<Enemy1Ranged> enemyRangedRespawner;
 
-    public List <FlyingEnemySelbstVersuch> flyingEnemySelbstVersuch;
+    public List<FlyingEnemySelbstVersuch> flyingEnemySelbstVersuch;
 
-
+    private Rigidbody2D rb;
 
 
     private void Start()
@@ -44,8 +45,16 @@ public class GameManager : MonoBehaviour
         cinemachineVirtualCamera = GameObject.Find("OpenRoomMainCamera").GetComponent<CinemachineVirtualCamera>();
 
         playerStats = GameObject.Find("Player").GetComponent<PlayerStats>();
-        playerCombat = GameObject.Find("Player").GetComponent <PlayerCombatTry>();
+        playerCombat = GameObject.Find("Player").GetComponent<PlayerCombatTry>();
         playerMove = GameObject.Find("Player").GetComponent<MovementPlayer>();
+        rb = GameObject.Find("Player").GetComponent<Rigidbody2D>();
+
+
+        //for (int i = 0; i < enemyRespawner.Count; i++)
+        //{
+        //    enemyTransform[i] = enemyRespawner[i].transform;
+        //}
+
     }
 
     private void Update()
@@ -53,13 +62,13 @@ public class GameManager : MonoBehaviour
         CheckRespawn();
 
         //respawnPoint.localScale = Vector3.one;
-        
+
     }
 
     public void Respawn()
     {
         respawnTimeStart = Time.time;
-        
+
         originalPlayerScale = playerStats.transform.localScale;
         respawn = true;
         //Time.timeScale = 0f;
@@ -71,8 +80,6 @@ public class GameManager : MonoBehaviour
 
     private void CheckRespawn()
     {
-        
-        
 
 
 
@@ -81,7 +88,12 @@ public class GameManager : MonoBehaviour
             foreach (Enemy1 enemy in enemyRespawner)
             {
                 enemy.Respawn();
+
             }
+            //for (int i = 0; i < enemyRespawner.Count; i++)
+            //{
+            //    enemyRespawner[i].transform.position = enemyTransform[i].position;
+            //}
 
             foreach (Enemy1Ranged enemy in enemyRangedRespawner)
             {
@@ -98,7 +110,7 @@ public class GameManager : MonoBehaviour
             // Instanziere das Prefab
             //GameObject playerClone = Instantiate(player, checkPointManager.GetLastCheckpointPosition(), Quaternion.identity);
             playerStats.transform.position = checkPointManager.GetLastCheckpointPosition();
-            
+
             playerMove.IsGrappling = false;
             playerMove.isDashing = false;
             playerMove.canDash = true;
@@ -106,7 +118,9 @@ public class GameManager : MonoBehaviour
             playerMove.didGrappleHit = false;
             playerCombat.isAttacking = false;
             playerStats.ResetHealth();
-            
+
+            rb.velocity = Vector2.zero;
+
 
             // Stelle die ursprüngliche Skalierung des Spielers im Klon wieder her
             //playerClone.transform.localScale = originalPlayerScale;
@@ -119,7 +133,7 @@ public class GameManager : MonoBehaviour
 
     }
 
-   
+
 
 
 }

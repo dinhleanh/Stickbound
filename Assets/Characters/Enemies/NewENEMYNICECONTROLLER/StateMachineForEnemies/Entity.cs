@@ -37,7 +37,7 @@ public class Entity : MonoBehaviour
     [SerializeField]
     private Transform playerBehindCheck;
 
-    protected Transform StartPos;
+    private Vector3 StartPos;
 
 
 
@@ -86,7 +86,7 @@ public class Entity : MonoBehaviour
 
 
 
-
+    
     public virtual void Start()
     {
         gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
@@ -101,9 +101,9 @@ public class Entity : MonoBehaviour
         rb = aliveGO.GetComponent<Rigidbody2D>();
         anim = aliveGO.GetComponent<Animator>();
         atsm = aliveGO.GetComponent<AnimationToStateMachine>();
-        StartPos = aliveGO.GetComponent<Transform>();
-
-        StartPos.position = aliveGO.transform.position;
+        
+        StartPos = aliveGO.transform.position;
+        //StartPos.position = aliveGO.transform.position;
 
         stateMachine = new FiniteStateMachine();
     }
@@ -219,7 +219,7 @@ public class Entity : MonoBehaviour
     public virtual void DamageHop(float velocity)
     {
         isHopping = true;
-        velocityWorkspace.Set(rb.velocity.x, velocity);
+        velocityWorkspace.Set(rb.velocity.x * velocity, velocity);
         rb.velocity = velocityWorkspace;
     }
 
@@ -265,6 +265,9 @@ public class Entity : MonoBehaviour
         if (gameManager.respawn && aliveGO.activeInHierarchy == false)
         {
             isDead = false;
+            aliveGO.transform.position = StartPos;
+            Debug.Log(StartPos + "StartPos");
+            Debug.Log(aliveGO.transform.position + "Transform alive");
             //aliveGO.transform.position = StartPos.position;
             aliveGO.SetActive(true);
 

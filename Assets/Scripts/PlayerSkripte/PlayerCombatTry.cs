@@ -123,7 +123,7 @@ public class PlayerCombatTry : MonoBehaviour
     {
        
         isAttacking = false;
-        Debug.Log("EndAttackAnimation method called.");
+        //Debug.Log("EndAttackAnimation method called.");
         anim.SetBool("isAttacking", isAttacking);
         anim.SetBool("attack1", false);
     }
@@ -146,8 +146,12 @@ public class PlayerCombatTry : MonoBehaviour
             {
                 direction = -1;
             }
+
             
+                Debug.Log("lol");
                 PL.Knockback(direction);
+            
+               
             
             
         }
