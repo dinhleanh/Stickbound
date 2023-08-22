@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Enemy1 : Entity
@@ -127,5 +128,40 @@ public class Enemy1 : Entity
         base.Respawn();
         stateMachine.Initialize(moveState);
         
+    }
+
+    public override bool CheckPlayerInMinAgroRange()
+    {
+        //return base.CheckPlayerInMinAgroRange();
+        return Physics2D.BoxCast(playerCheck.position, new Vector2(2f, 2f), 0f, aliveGO.transform.right, entityData.maxAgroDistance, entityData.whatIsPlayer);
+    }
+
+    public override bool CheckPlayerInMaxAgroRange()
+    {
+        return Physics2D.BoxCast(playerCheck.position, new Vector2(2f, 2f), 0f, aliveGO.transform.right, entityData.maxAgroDistance, entityData.whatIsPlayer);
+        //return base.CheckPlayerInMaxAgroRange();
+    }
+
+    public override bool CheckPlayerInCloseRangeAction()
+    {
+        return Physics2D.BoxCast(playerCheck.position, new Vector2(2f, 2f), 0f, aliveGO.transform.right, entityData.closeRangeActionDistance, entityData.whatIsPlayer);
+        //return base.CheckPlayerInCloseRangeAction();
+    }
+
+    public override bool CheckPlayerBehind()
+    {
+        return Physics2D.BoxCast(playerCheck.position, new Vector2(2f, 2f), 0f, aliveGO.transform.right * -1, entityData.playerBehindCheckDistance, entityData.whatIsPlayer);
+        //return base.CheckPlayerBehind();
+    }
+
+    public override void CheckTouchDamage()
+    {
+        base.CheckTouchDamage();
+    }
+
+    public override bool CheckWall()
+    {
+        //return base.CheckWall();
+        return Physics2D.Raycast(wallCheck.position, aliveGO.transform.right, entityData.wallCheckDistance, entityData.whatisGround);
     }
 }

@@ -4,6 +4,7 @@ using System.Runtime.CompilerServices;
 using Unity.VisualScripting;
 //using UnityEditor.U2D.Path;
 using UnityEngine;
+using UnityEngine.Rendering.Universal;
 //using static UnityEngine.RuleTile.TilingRuleOutput;
 
 public class Entity : MonoBehaviour
@@ -24,12 +25,12 @@ public class Entity : MonoBehaviour
     public AnimationToStateMachine atsm { get; private set; }
 
     [SerializeField]
-    private Transform wallCheck;
+    public Transform wallCheck;
     [SerializeField]
     private Transform ledgeCheck;
 
     [SerializeField]
-    private Transform playerCheck;
+    public Transform playerCheck;
 
     [SerializeField]
     private Transform groundCheck;
@@ -151,6 +152,7 @@ public class Entity : MonoBehaviour
 
     public virtual bool CheckWall()
     {
+        //return Physics2D.BoxCast(wallCheck.position, new Vector2(1f, 1f), 0f, aliveGO.transform.right, entityData.wallCheckDistance, entityData.whatisGround);
         return Physics2D.Raycast(wallCheck.position, aliveGO.transform.right, entityData.wallCheckDistance, entityData.whatisGround);
     }
 
@@ -166,23 +168,29 @@ public class Entity : MonoBehaviour
 
     public virtual bool CheckPlayerInMinAgroRange()
     {
-        return Physics2D.Raycast(playerCheck.position, aliveGO.transform.right, entityData.minAgroDistance, entityData.whatIsPlayer);
+        return Physics2D.BoxCast(playerCheck.position, new Vector2(1f, 8f), 0f, aliveGO.transform.right, entityData.minAgroDistance, entityData.whatIsPlayer);
+        //return Physics2D.Raycast(playerCheck.position, aliveGO.transform.right, entityData.minAgroDistance, entityData.whatIsPlayer);
     }
+
+    // Vll hier noch Check PLayer Above Chekc
 
     public virtual bool CheckPlayerInMaxAgroRange()
     {
-        return Physics2D.Raycast(playerCheck.position, aliveGO.transform.right, entityData.maxAgroDistance, entityData.whatIsPlayer);
+        return Physics2D.BoxCast(playerCheck.position, new Vector2(1f, 8f), 0f, aliveGO.transform.right, entityData.maxAgroDistance, entityData.whatIsPlayer);
+        //return Physics2D.Raycast(playerCheck.position, aliveGO.transform.right, entityData.maxAgroDistance, entityData.whatIsPlayer);
 
     }
 
     public virtual bool CheckPlayerInCloseRangeAction()
     {
-        return Physics2D.Raycast(playerCheck.position, aliveGO.transform.right, entityData.closeRangeActionDistance, entityData.whatIsPlayer);
+        return Physics2D.BoxCast(playerCheck.position, new Vector2(1f, 8f), 0f, aliveGO.transform.right, entityData.closeRangeActionDistance, entityData.whatIsPlayer);
+        //return Physics2D.Raycast(playerCheck.position, aliveGO.transform.right, entityData.closeRangeActionDistance, entityData.whatIsPlayer);
     }
 
     public virtual bool CheckPlayerBehind()
     {
-        return Physics2D.Raycast(playerBehindCheck.position, aliveGO.transform.right * -1, entityData.playerBehindCheckDistance, entityData.whatIsPlayer);
+        return Physics2D.BoxCast(playerBehindCheck.position, new Vector2(1f, 8f), 0f, aliveGO.transform.right * -1, entityData.playerBehindCheckDistance, entityData.whatIsPlayer);
+        //return Physics2D.Raycast(playerBehindCheck.position, aliveGO.transform.right * -1, entityData.playerBehindCheckDistance, entityData.whatIsPlayer);
     }
 
     public virtual void CheckTouchDamage()
