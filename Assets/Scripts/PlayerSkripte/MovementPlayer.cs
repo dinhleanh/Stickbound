@@ -1094,7 +1094,7 @@ public class MovementPlayer : MonoBehaviour
 
             else if (isDashing && IsGrappling)
             {
-                Debug.Log("det");
+                
                 IsGrappling = false;
                 
                 IsInGrapplingCooldown = true;
