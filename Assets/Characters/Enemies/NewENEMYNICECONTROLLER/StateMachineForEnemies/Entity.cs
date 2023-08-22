@@ -36,7 +36,7 @@ public class Entity : MonoBehaviour
     private Transform groundCheck;
 
     [SerializeField]
-    private Transform playerBehindCheck;
+    public Transform playerBehindCheck;
 
     private Vector3 StartPos;
 

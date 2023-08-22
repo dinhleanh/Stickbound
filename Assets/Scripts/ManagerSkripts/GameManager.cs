@@ -27,7 +27,7 @@ public class GameManager : MonoBehaviour
     private CinemachineVirtualCamera cinemachineVirtualCamera;
 
 
-
+    CameraManager cameraManager;
 
     public List<Enemy1> enemyRespawner;
     //private List<Transform> enemyTransform;
@@ -43,6 +43,8 @@ public class GameManager : MonoBehaviour
     {
 
         cinemachineVirtualCamera = GameObject.Find("OpenRoomMainCamera").GetComponent<CinemachineVirtualCamera>();
+
+        cameraManager = GameObject.Find("Cameras").GetComponent<CameraManager>();
 
         playerStats = GameObject.Find("Player").GetComponent<PlayerStats>();
         playerCombat = GameObject.Find("Player").GetComponent<PlayerCombatTry>();
@@ -106,6 +108,8 @@ public class GameManager : MonoBehaviour
                 enemy.Respawn();
             }
 
+            cameraManager.DisableAllCams();
+
 
             playerStats.gameObject.SetActive(true);
             // Instanziere das Prefab
@@ -127,8 +131,11 @@ public class GameManager : MonoBehaviour
             //playerClone.transform.localScale = originalPlayerScale;
 
             //Time.timeScale = 1f;
+            cinemachineVirtualCamera.enabled = true;
             cinemachineVirtualCamera.m_Follow = playerStats.transform;
             respawn = false;
+
+            
 
         }
 

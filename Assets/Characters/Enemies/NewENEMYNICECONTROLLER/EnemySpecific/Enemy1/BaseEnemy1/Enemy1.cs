@@ -150,7 +150,7 @@ public class Enemy1 : Entity
 
     public override bool CheckPlayerBehind()
     {
-        return Physics2D.BoxCast(playerCheck.position, new Vector2(2f, 2f), 0f, aliveGO.transform.right * -1, entityData.playerBehindCheckDistance, entityData.whatIsPlayer);
+        return Physics2D.Raycast(playerBehindCheck.position, aliveGO.transform.right * -1, entityData.playerBehindCheckDistance, entityData.whatIsPlayer);
         //return base.CheckPlayerBehind();
     }
 

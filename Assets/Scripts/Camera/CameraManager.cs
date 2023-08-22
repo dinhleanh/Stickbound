@@ -16,7 +16,7 @@ public class CameraManager : MonoBehaviour
 
     public static CameraManager instance;
 
-    [SerializeField] private CinemachineVirtualCamera[] _allVirtualCameras;
+    [SerializeField] public CinemachineVirtualCamera[] _allVirtualCameras;
 
     [Header("Controls for lerping the Y Damping during player Jump/Fall")]
     [SerializeField] private float _fallPanAmount = 0.9f;
@@ -77,6 +77,17 @@ public class CameraManager : MonoBehaviour
 
 
     }
+
+    public void DisableAllCams()
+    {
+        for(int i = 0; i < _allVirtualCameras.Length; i++)
+        {
+            _allVirtualCameras[i].enabled = false;
+        }
+    }
+
+
+
 
     #region Lerp the YDamping
 

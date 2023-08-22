@@ -82,9 +82,9 @@ public enum PanDirection
     Right,
 }
 
-
-//[CustomEditor(typeof(CamerControllTrigger))]
 #if UNITY_EDITOR
+[CustomEditor(typeof(CamerControllTrigger))]
+
 public class MyScriptEditor : Editor
 {
     CamerControllTrigger cameraControlTrigger;
