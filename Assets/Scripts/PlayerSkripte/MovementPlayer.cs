@@ -29,6 +29,10 @@ public class MovementPlayer : MonoBehaviour
 
 
 
+    public float footstepDelay = 0.3f; // Die Verzögerung zwischen den Fußschritten
+    private float lastFootstepTime;
+
+
 
     private bool knockback;
     private float knockbackStartTime;
@@ -317,7 +321,9 @@ public class MovementPlayer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
+       
+
 
 
         // Raycasts hier fehlt noch IsOnCeiling
@@ -334,6 +340,21 @@ public class MovementPlayer : MonoBehaviour
         //Idle();
 
         //Debug.Log(knockback);
+
+
+
+        //FootstepSound
+        if (IsGrounded && (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D)))
+        {
+            if (Time.time - lastFootstepTime >= footstepDelay)
+            {
+                AudioManager.Instance.PlaySound("PlayerMove");
+                lastFootstepTime = Time.time; // Aktualisiere den Zeitstempel
+            }
+        }
+
+
+
 
         UpdateAnimations();
 
@@ -625,7 +646,7 @@ public class MovementPlayer : MonoBehaviour
 
         if (context.duration > 0)
         {
-            AudioManager.Instance.PlaySound("PlayerMove");
+            //AudioManager.Instance.PlaySound("PlayerMove");
         }
         if (context.performed)
         {
