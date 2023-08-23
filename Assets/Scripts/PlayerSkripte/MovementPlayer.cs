@@ -454,8 +454,6 @@ public class MovementPlayer : MonoBehaviour
     private void SetFacingDirection(Vector2 _moveVector)
     {
 
-
-
         // erste If ANweisung funkt nur wenn man noch nicht gerespawned ist
         Vector2 mouse = GetMousePosition();
         if (Input.GetMouseButtonDown(0))
@@ -523,6 +521,7 @@ public class MovementPlayer : MonoBehaviour
         if (rb.velocity.x != 0f && !isDashing && IsGrounded && !isInDashCooldown && !IsOnWall && !knockback)
         {
             isWalking = true;
+            //AudioManager.Instance.PlaySound("PlayerMove");
         }
         else
         {
@@ -623,10 +622,13 @@ public class MovementPlayer : MonoBehaviour
     public void OnMove(InputAction.CallbackContext context)
     {
         moveVector = context.ReadValue<Vector2>();
+
+        if (context.duration > 0)
+        {
+            AudioManager.Instance.PlaySound("PlayerMove");
+        }
         if (context.performed)
         {
-            
-                FindObjectOfType<AudioManager>().PlaySound("PlayerMove");
             
             IsMoving = true;
             IsInGrapplingCooldown = false; // Cancel GH when Moving

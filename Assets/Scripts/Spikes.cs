@@ -17,7 +17,7 @@ public class Spikes : MonoBehaviour
     [SerializeField]
     private float damageSpikes = 10f;
     [SerializeField]
-    private float knockback = 1f;
+    private float knockback = 2f;
 
     //private bool canDamage = true;
     //private float damageCooldown = 1f;

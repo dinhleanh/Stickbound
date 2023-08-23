@@ -128,7 +128,8 @@ public class GameManager : MonoBehaviour
             playerMove.canDash = true;
             playerMove.canGrapple = true;
             playerMove.didGrappleHit = false;
-            playerCombat.isAttacking = false;
+            //playerCombat.isAttacking = false;
+            playerCombat.FinishAttack1();
             playerStats.ResetHealth();
 
             rb.velocity = Vector2.zero;
