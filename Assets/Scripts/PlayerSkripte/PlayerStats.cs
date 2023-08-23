@@ -10,7 +10,7 @@ public class PlayerStats : MonoBehaviour
     public float currentHealth;
 
     
-
+    SpriteRenderer spriteRenderer;
     private GameManager gameManager;
 
 
@@ -19,6 +19,7 @@ public class PlayerStats : MonoBehaviour
 
     private void Start()
     {
+        spriteRenderer = GetComponent<SpriteRenderer>();
         currentHealth = maxHealth;
         gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
     }
@@ -27,6 +28,16 @@ public class PlayerStats : MonoBehaviour
     {
         ClampHealth();
        // Debug.Log(currentHealth);
+
+        if(isInvulnerable)
+        {
+            spriteRenderer.color = Color.red;
+
+        }
+        else
+        {
+            spriteRenderer.color = Color.white;
+        }
 
     }
 

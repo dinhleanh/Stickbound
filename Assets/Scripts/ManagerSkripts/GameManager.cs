@@ -83,7 +83,12 @@ public class GameManager : MonoBehaviour
     private void CheckRespawn()
     {
 
+        FindObjectOfType<AudioManager>().MuteSound("CaveBoss");
+        FindObjectOfType<AudioManager>().UnmuteSound("Theme");
+        FindObjectOfType<AudioManager>().PlaySound("Theme");
 
+
+        //AudioManager.Instance.MuteSound("CaveBoss");
 
         if (Time.time >= respawnTimeStart + respawnTime && respawn)
         {
@@ -131,7 +136,8 @@ public class GameManager : MonoBehaviour
             //playerClone.transform.localScale = originalPlayerScale;
 
             //Time.timeScale = 1f;
-            cinemachineVirtualCamera.enabled = true;
+            //cinemachineVirtualCamera.enabled = true;
+            cameraManager.ResetCameraToCamera0();
             cinemachineVirtualCamera.m_Follow = playerStats.transform;
             respawn = false;
 

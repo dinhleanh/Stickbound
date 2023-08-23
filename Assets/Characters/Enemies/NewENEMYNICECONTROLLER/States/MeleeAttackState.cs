@@ -54,6 +54,7 @@ public class MeleeAttackState : AttackState
     
     foreach (Collider2D collider in detectedObjects)
         {
+            //AudioManager.Instance.PlaySound("EnemyMeleeAttack");
             collider.transform.SendMessage("Damage", attackDetails);
         }
     

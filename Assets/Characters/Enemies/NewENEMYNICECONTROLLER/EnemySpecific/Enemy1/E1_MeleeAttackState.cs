@@ -56,5 +56,6 @@ public class E1_MeleeAttackState : MeleeAttackState
     public override void TriggerAttack()
     {
         base.TriggerAttack();
+        AudioManager.Instance.PlaySound("EnemyMeleeAttack");
     }
 }

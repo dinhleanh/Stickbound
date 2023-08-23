@@ -59,6 +59,7 @@ public class E1_PlayerDetectedState : PlayerDetectedState
    if (performCloseRangeAction && !enemy.isHopping && ground)
         {
             stateMachine.ChangeState(enemy.meleeAttackState);
+            //AudioManager.Instance.PlaySound("EnemyMeleeAttack");
         }
         else
    if (performLongRangeAction)

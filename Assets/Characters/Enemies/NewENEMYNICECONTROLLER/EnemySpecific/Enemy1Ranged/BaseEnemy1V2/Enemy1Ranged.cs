@@ -99,7 +99,7 @@ public class Enemy1Ranged : Entity
         }
         else if (CheckPlayerInMinAgroRange())
         {
-            stateMachine.ChangeState(rangedAttackState);
+            stateMachine.ChangeState(meleeAttackState);
         }
         else if (!CheckPlayerInMinAgroRange())
         {

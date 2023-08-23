@@ -35,6 +35,7 @@ public class E1_ChargeState : ChargeState
         if (performCloseRangeAction && !enemy.isHopping && ground)
         {
             stateMachine.ChangeState(enemy.meleeAttackState);
+            //AudioManager.Instance.PlaySound("EnemyMeleeAttack");
         }
         else
         if (!isDetectingLedge || isDetectingWall)

@@ -10,7 +10,25 @@ public class AudioManager : MonoBehaviour
 
     public Sound[] sounds;
 
-    public static AudioManager instance;
+    private static AudioManager instance;
+
+
+    public ChangeMusicSkript1 changeMusicSkript1;
+
+
+
+    public static AudioManager Instance
+    {
+        get
+        {
+            if (instance == null)
+            {
+                instance = FindObjectOfType<AudioManager>();
+            }
+            return instance;
+        }
+    }
+
 
     private void Awake()
     {
@@ -28,19 +46,29 @@ public class AudioManager : MonoBehaviour
 
         foreach ( Sound s in sounds)
         {
+           
             s.source = gameObject.AddComponent<AudioSource>();
+            s.volumeSafe = s.volume;
             s.source.clip = s.clip;
             s.source.volume = s.volume;
             s.source.pitch = s.pitch;
             s.source.loop = s.loop;
+            
         }
     }
 
     void Start()
     {
-        PlaySound("Theme");
+       
+           PlaySound("Theme");
+       
     }
 
+    private void Update()
+    {
+        
+
+    }
 
     public void PlaySound (string name)
     {
@@ -50,6 +78,31 @@ public class AudioManager : MonoBehaviour
             Debug.LogWarning("Sound: " + name + " cannot be found!");
             return;
         }
+        
         s.source.Play();
+        
+    }
+
+    public void MuteSound (string name)
+    {
+        Sound s = Array.Find(sounds, sound => sound.nameOfSoundClip == name);
+        if (s == null)
+        {
+            Debug.LogWarning("Sound: " + name + " cannot be found!");
+            return;
+        }
+        s.source.volume = 0f;
+    }
+
+    public void UnmuteSound(string name)
+    {
+        Sound s = Array.Find(sounds, sound => sound.nameOfSoundClip == name);
+        if (s == null)
+        {
+            Debug.LogWarning("Sound: " + name + " cannot be found!");
+            return;
+        }
+
+        s.source.volume = s.volumeSafe;
     }
 }

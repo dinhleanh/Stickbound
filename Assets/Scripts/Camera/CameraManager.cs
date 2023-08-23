@@ -86,6 +86,12 @@ public class CameraManager : MonoBehaviour
         }
     }
 
+    public void ResetCameraToCamera0()
+    {
+        _allVirtualCameras[0].enabled = true;
+        _currentCamera = _allVirtualCameras[0];
+    }
+
 
 
 

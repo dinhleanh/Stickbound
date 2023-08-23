@@ -41,7 +41,7 @@ public class MovementPlayer : MonoBehaviour
     private PlayerCombatTry playerCombat;
     private PlayerStats playerStats;
 
-
+    SpriteRenderer spriteRenderer;
 
 
 
@@ -288,7 +288,7 @@ public class MovementPlayer : MonoBehaviour
         lineRenderer = GetComponent<LineRenderer>();
         playerCombat = GetComponent<PlayerCombatTry>();
         playerStats = GetComponent<PlayerStats>();
-
+        spriteRenderer = GetComponent<SpriteRenderer>();
         lineRenderer.positionCount = 0; // no lines showing nur für grapplemechanik
 
 
@@ -317,7 +317,7 @@ public class MovementPlayer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        
 
 
         // Raycasts hier fehlt noch IsOnCeiling
@@ -531,6 +531,8 @@ public class MovementPlayer : MonoBehaviour
 
 
 
+
+
     }
 
     // Rotation nicht mit scale = -1 sondern rotation !!!
@@ -623,7 +625,9 @@ public class MovementPlayer : MonoBehaviour
         moveVector = context.ReadValue<Vector2>();
         if (context.performed)
         {
-
+            
+                FindObjectOfType<AudioManager>().PlaySound("PlayerMove");
+            
             IsMoving = true;
             IsInGrapplingCooldown = false; // Cancel GH when Moving
         }
@@ -679,6 +683,7 @@ public class MovementPlayer : MonoBehaviour
         // Main Jump
         if (coyoteTimeCounter > 0f && jumpBufferTimeCounter > 0f && canJump)   // Vorher:  context.started && IsGrounded
         {
+            FindObjectOfType<AudioManager>().PlaySound("PlayerJump");
             rb.gravityScale = gravityScale;
             Vector2 ResetVelocityVector = rb.velocity;
             ResetVelocityVector.y = 0;
@@ -789,7 +794,7 @@ public class MovementPlayer : MonoBehaviour
         Vector2 tempVector = rb.velocity;
         tempVector.y = 0f;
         rb.velocity = tempVector;
-
+        FindObjectOfType<AudioManager>().PlaySound("PlayerDash");
         DashInputMethod();
 
         yield return new WaitForSeconds(dashingTime);
@@ -1164,13 +1169,14 @@ public class MovementPlayer : MonoBehaviour
 
     public void Knockback(int direction)
     {
-        
-        
+
+            
             knockback = true;
             knockbackStartTime = Time.time;
             rb.velocity = new Vector2(knockbackSpeed.x * direction, knockbackSpeed.y);
-        
-       
+           
+
+
 
     }
 

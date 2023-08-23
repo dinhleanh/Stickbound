@@ -39,7 +39,7 @@ public class PlayerCombatTry : MonoBehaviour
 
     private Animator anim;
 
-    
+    private SpriteRenderer spriteRenderer;
 
 
     private void Awake()
@@ -47,7 +47,7 @@ public class PlayerCombatTry : MonoBehaviour
         PS = GetComponent<PlayerStats>();
         anim = GetComponent<Animator>();
         PL = GetComponent<MovementPlayer>();
-        
+        spriteRenderer = GetComponent<SpriteRenderer>();
     }
     private void Start()
     {
@@ -131,12 +131,15 @@ public class PlayerCombatTry : MonoBehaviour
 
     public void Damage(AttackDetails attackDetails)
     {
-        if (!PL.GetDashStatus())
+        if (!PL.GetDashStatus() && !PS.isInvulnerable)
         {
+
+            
+
             int direction;
 
             PS.DecreaseHealth(attackDetails.damageAmount);
-
+            FindObjectOfType<AudioManager>().PlaySound("PlayerHit");
 
             if (attackDetails.position.x < transform.position.x)
             {
@@ -148,7 +151,7 @@ public class PlayerCombatTry : MonoBehaviour
             }
 
             
-                Debug.Log("lol");
+                //Debug.Log("lol");
                 PL.Knockback(direction);
             
                
