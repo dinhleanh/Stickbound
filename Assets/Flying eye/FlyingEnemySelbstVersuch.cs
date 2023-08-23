@@ -12,6 +12,15 @@ public class FlyingEnemySelbstVersuch : MonoBehaviour
 
     private bool isDead = false;
 
+    public Animator animator;
+
+
+    private bool isFlying;
+    private bool isAttacking;
+
+
+
+
     public float speed;
     public Transform[] patrolPoints;
     public float waitTime = 1f;
@@ -29,9 +38,12 @@ public class FlyingEnemySelbstVersuch : MonoBehaviour
     private bool isPlayerVisible = false;
 
     private float patrolTimer = 0f;
+
     private void Awake()
     {
+
         aliveV2 = transform.Find("AliveV2").gameObject;
+        animator = aliveV2.GetComponent<Animator>();
         rb = aliveV2.GetComponent<Rigidbody2D>();
         player = GameObject.FindGameObjectWithTag("Player");
         playerStats = player.GetComponent<PlayerStats>();
@@ -48,7 +60,7 @@ public class FlyingEnemySelbstVersuch : MonoBehaviour
         //MoveAndShoot();
         //Die();
         //isDead = false;
-        
+        Debug.Log(isAttacking);
     }
 
     private void MoveAndShoot()
@@ -100,6 +112,9 @@ public class FlyingEnemySelbstVersuch : MonoBehaviour
 
     private void Patrol()
     {
+        isAttacking = false;
+        isFlying = true;
+        animator.SetBool("flying",isFlying);
         Vector2 targetPosition = patrolPoints[currentPointIndex].position;
 
         if (Vector2.Distance(aliveV2.transform.position, targetPosition) > 0.1f)
@@ -136,9 +151,12 @@ public class FlyingEnemySelbstVersuch : MonoBehaviour
 
     private void Shoot()
     {
+        isFlying = false;
+        
         if(!isDead)
         {
-            
+            isAttacking = true;
+            animator.SetBool("attacking", isAttacking);
             Instantiate(bullet, bulletPos.position, Quaternion.identity);
         }
         

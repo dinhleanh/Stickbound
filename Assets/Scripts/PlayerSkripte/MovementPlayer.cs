@@ -1099,7 +1099,7 @@ public class MovementPlayer : MonoBehaviour
                 StartCoroutine(GrappleCooldown());
             }
 
-            else if (isDashing && IsGrappling)
+            else if (isDashing && IsGrappling && didGrappleHit)
             {
                 
                 IsGrappling = false;
