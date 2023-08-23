@@ -78,15 +78,17 @@ public class GameManager : MonoBehaviour
         playerCombat.isAttacking = false;
         //playerCombat.isAttacking = false;
         playerStats.gameObject.SetActive(false);
-    }
-
-    private void CheckRespawn()
-    {
 
         FindObjectOfType<AudioManager>().MuteSound("CaveBoss");
         FindObjectOfType<AudioManager>().UnmuteSound("Theme");
         FindObjectOfType<AudioManager>().PlaySound("Theme");
 
+    }
+
+    private void CheckRespawn()
+    {
+
+       
 
         //AudioManager.Instance.MuteSound("CaveBoss");
 

@@ -83,7 +83,7 @@ public class AudioManager : MonoBehaviour
         
     }
 
-    public void MuteSound (string name)
+    public void MuteSound(string name)
     {
         Sound s = Array.Find(sounds, sound => sound.nameOfSoundClip == name);
         if (s == null)
@@ -91,6 +91,8 @@ public class AudioManager : MonoBehaviour
             Debug.LogWarning("Sound: " + name + " cannot be found!");
             return;
         }
+
+        Debug.Log("Muting sound: " + name);
         s.source.volume = 0f;
     }
 
@@ -103,6 +105,7 @@ public class AudioManager : MonoBehaviour
             return;
         }
 
+        Debug.Log("Unmuting sound: " + name);
         s.source.volume = s.volumeSafe;
     }
 }

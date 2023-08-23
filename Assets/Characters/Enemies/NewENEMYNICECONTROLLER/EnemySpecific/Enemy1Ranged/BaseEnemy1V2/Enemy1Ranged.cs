@@ -127,4 +127,12 @@ public class Enemy1Ranged : Entity
     {
         base.Update();
     }
+
+    public override void DamageHop(float velocity, float damageDirection)
+    {
+        //base.DamageHop(velocity, damageDirection);
+        isHopping = true;
+        velocityWorkspace.Set(4 * damageDirection, velocity);
+        rb.velocity = velocityWorkspace;
+    }
 }

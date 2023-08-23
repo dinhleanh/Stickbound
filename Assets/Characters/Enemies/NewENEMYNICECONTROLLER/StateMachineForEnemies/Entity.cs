@@ -54,7 +54,7 @@ public class Entity : MonoBehaviour
     public int lastDamageDirection { get; private set; }
 
 
-    private Vector2 velocityWorkspace;
+    public Vector2 velocityWorkspace;
 
 
     protected bool isStunned;
@@ -224,11 +224,14 @@ public class Entity : MonoBehaviour
         currentStunResistance = entityData.stunResistance;
     }
 
-    public virtual void DamageHop(float velocity)
+    public virtual void DamageHop(float velocity, float damageDirection)
     {
-        isHopping = true;
-        velocityWorkspace.Set(rb.velocity.x * velocity, velocity);
-        rb.velocity = velocityWorkspace;
+        
+            isHopping = true;
+            velocityWorkspace.Set(4 * damageDirection, velocity);
+            rb.velocity = velocityWorkspace;
+
+        
     }
 
     public virtual void Damage(AttackDetails attackDetails)
@@ -238,7 +241,9 @@ public class Entity : MonoBehaviour
         currentHealth -= attackDetails.damageAmount;
         currentStunResistance -= attackDetails.stunDamageAmount;
 
-        DamageHop(entityData.damageHopSpeed);
+        
+
+
         //isHopping = false;
 
         Instantiate(entityData.hitParticle, aliveGO.transform.position, Quaternion.Euler(0f, 0f, Random.Range(0f, 360f)));
@@ -246,11 +251,15 @@ public class Entity : MonoBehaviour
         if (attackDetails.position.x > aliveGO.transform.position.x)
         {
             lastDamageDirection = -1;
+            
         }
         else
         {
             lastDamageDirection = 1;
         }
+
+        DamageHop(entityData.damageHopSpeed, lastDamageDirection);
+
 
         if (currentStunResistance <= 0f)
         {
