@@ -45,7 +45,7 @@ public class Entity : MonoBehaviour
     public bool isHopping = false;
 
     [SerializeField]
-    private float currentHealth;
+    public float currentHealth;
 
     private float currentStunResistance;
 

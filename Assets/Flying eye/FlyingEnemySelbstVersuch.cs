@@ -53,14 +53,16 @@ public class FlyingEnemySelbstVersuch : MonoBehaviour
     private void Update()
     {
         timeSinceLastShot += Time.deltaTime;
-        if(playerStats.currentHealth > 0f)
+        if (playerStats.currentHealth > 0f)
         {
             MoveAndShoot();
+            animator.SetBool("attacking", isAttacking); // Setze die Attack-Animation im Animator
         }
-        //MoveAndShoot();
-        //Die();
-        //isDead = false;
-        Debug.Log(isAttacking);
+        else
+        {
+            isAttacking = false; // Zurücksetzen der isAttacking-Variable
+            animator.SetBool("attacking", false); // Deaktivieren der Attack-Animation
+        }
     }
 
     private void MoveAndShoot()

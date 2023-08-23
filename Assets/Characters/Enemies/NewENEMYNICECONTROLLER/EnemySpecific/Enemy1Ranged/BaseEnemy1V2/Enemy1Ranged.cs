@@ -106,6 +106,14 @@ public class Enemy1Ranged : Entity
             lookForPlayerState.SetTurnImmediately(true);
             stateMachine.ChangeState(lookForPlayerState);
         }
+        //else
+        //if(currentHealth <= 40f)
+        //{
+        //    dodgeStateData.dodgeCooldown = 1.5f;
+        //    dodgeStateData.dodgeSpeed = 30f;
+        //}
+
+        
     }
 
     public override void Respawn()
@@ -113,7 +121,9 @@ public class Enemy1Ranged : Entity
         base.Respawn();
         stateMachine.Initialize(moveState);
         //Debug.Log(StartPos.position);
-        
+
+        //dodgeStateData.dodgeCooldown = 3f;
+       // dodgeStateData.dodgeSpeed = 25f;
     }
 
     public override void OnDrawGizmos()

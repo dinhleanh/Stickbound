@@ -28,6 +28,7 @@ public class MovementPlayer : MonoBehaviour
     #endregion
 
 
+    
 
     public float footstepDelay = 0.3f; // Die Verzögerung zwischen den Fußschritten
     private float lastFootstepTime;
@@ -344,15 +345,23 @@ public class MovementPlayer : MonoBehaviour
 
 
         //FootstepSound
+        //if (IsGrounded && (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D)))
+        //{
+        //    if (Time.time - lastFootstepTime >= footstepDelay)
+        //    {
+        //        AudioManager.Instance.PlaySound("PlayerMove");
+        //        lastFootstepTime = Time.time; // Aktualisiere den Zeitstempel
+        //    }
+        //}
+
         if (IsGrounded && (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D)))
         {
             if (Time.time - lastFootstepTime >= footstepDelay)
             {
-                AudioManager.Instance.PlaySound("PlayerMove");
+                AudioManager.Instance.PlayRandomFootStepSound();
                 lastFootstepTime = Time.time; // Aktualisiere den Zeitstempel
             }
         }
-
 
 
 
@@ -813,6 +822,7 @@ public class MovementPlayer : MonoBehaviour
         isDashing = true;
         tr.emitting = true;
         IsMoving = true;
+        playerStats.isInvulnerable = true;
 
         Vector2 tempVector = rb.velocity;
         tempVector.y = 0f;
@@ -821,7 +831,7 @@ public class MovementPlayer : MonoBehaviour
         DashInputMethod();
 
         yield return new WaitForSeconds(dashingTime);
-
+        playerStats.isInvulnerable = false;
         isDashing = false;
         isInDashCooldown = true;
 

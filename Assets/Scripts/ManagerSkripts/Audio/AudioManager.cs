@@ -9,6 +9,7 @@ public class AudioManager : MonoBehaviour
 
 
     public Sound[] sounds;
+    public AudioClip[] footstepSounds;
 
     private static AudioManager instance;
 
@@ -55,6 +56,8 @@ public class AudioManager : MonoBehaviour
             s.source.loop = s.loop;
             
         }
+
+        
     }
 
     void Start()
@@ -107,5 +110,17 @@ public class AudioManager : MonoBehaviour
 
         Debug.Log("Unmuting sound: " + name);
         s.source.volume = s.volumeSafe;
+    }
+
+    public void PlayRandomFootStepSound()
+    {
+        AudioClip footstepclip = GetRandomFootstepClip();
+        PlaySound(footstepclip.name); // Hier den Namen des Clips übergeben
+    }
+
+    private AudioClip GetRandomFootstepClip()
+    {
+        int randomIndex = UnityEngine.Random.Range(0, footstepSounds.Length);
+        return footstepSounds[randomIndex];
     }
 }
