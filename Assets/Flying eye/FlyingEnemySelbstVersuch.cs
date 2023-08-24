@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using UnityEngine;
 
 public class FlyingEnemySelbstVersuch : MonoBehaviour
@@ -17,6 +18,18 @@ public class FlyingEnemySelbstVersuch : MonoBehaviour
 
     private bool isFlying;
     private bool isAttacking;
+
+
+
+
+    public float footstepDelay = 0.2f; // Die Verzögerung zwischen den Fußschritten
+    private float lastFootstepTime;
+
+
+    public float SoundRange = 20f;
+
+
+
 
 
 
@@ -52,6 +65,7 @@ public class FlyingEnemySelbstVersuch : MonoBehaviour
 
     private void Update()
     {
+        PlaySoundInRange();
         timeSinceLastShot += Time.deltaTime;
         if (playerStats.currentHealth > 0f)
         {
@@ -112,10 +126,76 @@ public class FlyingEnemySelbstVersuch : MonoBehaviour
         }
     }
 
+
+
+    public void PlaySoundInRange()
+    {
+        Vector2 directionToPlayer = (player.transform.position - aliveV2.transform.position).normalized;
+
+        RaycastHit2D hitPlayer = Physics2D.Raycast(rb.position, directionToPlayer, SoundRange, WhatIsPlayer);
+
+        bool isInSoundRange;
+
+        if (hitPlayer.collider != null)
+        {
+            isInSoundRange = true;
+        }
+        else
+        {
+            isInSoundRange = false;
+        }
+
+
+
+        if (isDead)
+        {
+            AudioManager.Instance.MuteSound("Enemy2Idle");
+        }
+        else
+        {
+            AudioManager.Instance.UnmuteSound("Enemy2Idle");
+        }
+
+
+        if (Time.time - lastFootstepTime >= footstepDelay)
+        {
+            if(!isDead)
+            {
+                if (isInSoundRange)
+                {
+                    AudioManager.Instance.UnmuteSound("Enemy2Idle");
+                    AudioManager.Instance.PlaySound("Enemy2Idle");
+                }
+                else
+                {
+                    AudioManager.Instance.MuteSound("Enemy2Idle");
+                }
+                lastFootstepTime = Time.time; // Aktualisiere den Zeitstempel
+            }
+            
+        }
+
+
+
+       
+
+
+
+    }
+
+
+
+
+
+
     private void Patrol()
     {
         isAttacking = false;
         isFlying = true;
+
+        
+
+        
         animator.SetBool("flying",isFlying);
         Vector2 targetPosition = patrolPoints[currentPointIndex].position;
 

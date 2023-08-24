@@ -242,6 +242,8 @@ MonoBehaviour:
   currentHealth: 0
   aliveV2: {fileID: 8947602606182558004}
   animator: {fileID: 0}
+  footstepDelay: 0.3
+  SoundRange: 15
   speed: 8
   patrolPoints:
   - {fileID: 0}

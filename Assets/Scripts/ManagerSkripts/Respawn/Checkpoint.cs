@@ -9,7 +9,8 @@ public class Checkpoint : MonoBehaviour
 
     private SpriteRenderer spriteRenderer;
 
-   
+    
+
     private PlayerStats playerStats;
 
     private void Start()
@@ -17,8 +18,8 @@ public class Checkpoint : MonoBehaviour
         
         playerStats = GameObject.Find("Player").GetComponent<PlayerStats>();
 
-
-        spriteRenderer=GetComponent<SpriteRenderer>();
+        
+        spriteRenderer =GetComponent<SpriteRenderer>();
         checkpointManager = FindObjectOfType<CheckPointManager>();
         checkpointManager.RegisterCheckpoint(this);
         

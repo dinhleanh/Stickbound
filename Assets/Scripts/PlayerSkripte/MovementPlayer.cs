@@ -1206,14 +1206,10 @@ public class MovementPlayer : MonoBehaviour
     public void Knockback(int direction)
     {
 
-            
             knockback = true;
             knockbackStartTime = Time.time;
             rb.velocity = new Vector2(knockbackSpeed.x * direction, knockbackSpeed.y);
-           
-
-
-
+         
     }
 
     public void KnockbackSpikes(float direction)

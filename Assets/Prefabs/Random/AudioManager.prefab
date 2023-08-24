@@ -52,6 +52,7 @@ MonoBehaviour:
     loop: 1
     source: {fileID: 0}
     volumeSafe: 0
+    blend: 0
   - nameOfSoundClip: PlayerMove
     clip: {fileID: 8300000, guid: 7b83e01d8920939448106a9c1a8c5009, type: 3}
     volume: 0.051
@@ -59,6 +60,7 @@ MonoBehaviour:
     loop: 0
     source: {fileID: 0}
     volumeSafe: 0
+    blend: 0
   - nameOfSoundClip: PlayerHit
     clip: {fileID: 8300000, guid: 6b75384920b57524bb7fb89dcdbf1a52, type: 3}
     volume: 0.165
@@ -66,6 +68,7 @@ MonoBehaviour:
     loop: 0
     source: {fileID: 0}
     volumeSafe: 0
+    blend: 0
   - nameOfSoundClip: PlayerAttack
     clip: {fileID: 8300000, guid: eb5820e74e7d6834aa653663278befcf, type: 3}
     volume: 0.233
@@ -73,6 +76,7 @@ MonoBehaviour:
     loop: 0
     source: {fileID: 0}
     volumeSafe: 0
+    blend: 0
   - nameOfSoundClip: PlayerJump
     clip: {fileID: 8300000, guid: 9184a0cc89570044eb0e02602cb90e69, type: 3}
     volume: 0.029
@@ -80,6 +84,7 @@ MonoBehaviour:
     loop: 0
     source: {fileID: 0}
     volumeSafe: 0
+    blend: 0
   - nameOfSoundClip: PlayerDash
     clip: {fileID: 8300000, guid: d0f6535da60aa31468bd700a80ee222b, type: 3}
     volume: 0.125
@@ -87,6 +92,7 @@ MonoBehaviour:
     loop: 0
     source: {fileID: 0}
     volumeSafe: 0
+    blend: 0
   - nameOfSoundClip: CheckPointAberEigDash
     clip: {fileID: 8300000, guid: d0f6535da60aa31468bd700a80ee222b, type: 3}
     volume: 0.165
@@ -94,6 +100,7 @@ MonoBehaviour:
     loop: 0
     source: {fileID: 0}
     volumeSafe: 0
+    blend: 0
   - nameOfSoundClip: EnemyMeleeAttack
     clip: {fileID: 8300000, guid: 4999f169ffe325f46a89d608c5604abe, type: 3}
     volume: 0.125
@@ -101,6 +108,7 @@ MonoBehaviour:
     loop: 0
     source: {fileID: 0}
     volumeSafe: 0
+    blend: 0
   - nameOfSoundClip: EnemyMeleeIdle
     clip: {fileID: 8300000, guid: e58c10d46daa21040a12a4a99e64fdde, type: 3}
     volume: 0.125
@@ -108,6 +116,7 @@ MonoBehaviour:
     loop: 0
     source: {fileID: 0}
     volumeSafe: 0
+    blend: 0
   - nameOfSoundClip: CaveBoss
     clip: {fileID: 8300000, guid: 644d6972dcd280b4685ca6d810025ed9, type: 3}
     volume: 0.421
@@ -115,6 +124,15 @@ MonoBehaviour:
     loop: 1
     source: {fileID: 0}
     volumeSafe: 0
+    blend: 0
+  - nameOfSoundClip: Enemy2Idle
+    clip: {fileID: 8300000, guid: 2e8738c3de7538245818f1584b5152ee, type: 3}
+    volume: 0.074
+    pitch: 0.78
+    loop: 0
+    source: {fileID: 0}
+    volumeSafe: 0
+    blend: 0.266
   footstepSounds:
   - nameOfSoundClip: Footstep1
     clip: {fileID: 8300000, guid: 6e048338c45edb746a0c905cc3a4dc5e, type: 3}
@@ -123,6 +141,7 @@ MonoBehaviour:
     loop: 0
     source: {fileID: 0}
     volumeSafe: 0
+    blend: 0
   - nameOfSoundClip: Footstep2
     clip: {fileID: 8300000, guid: 7b83e01d8920939448106a9c1a8c5009, type: 3}
     volume: 0.071
@@ -130,6 +149,7 @@ MonoBehaviour:
     loop: 0
     source: {fileID: 0}
     volumeSafe: 0
+    blend: 0
   - nameOfSoundClip: Footstep3
     clip: {fileID: 8300000, guid: 6815a542d812b4a45bc35f0ce9b5b620, type: 3}
     volume: 0.071
@@ -137,6 +157,7 @@ MonoBehaviour:
     loop: 0
     source: {fileID: 0}
     volumeSafe: 0
+    blend: 0
   - nameOfSoundClip: Footstep4
     clip: {fileID: 8300000, guid: c51e18b4df828ef43a3a217d4ea6edd0, type: 3}
     volume: 0.071
@@ -144,4 +165,5 @@ MonoBehaviour:
     loop: 0
     source: {fileID: 0}
     volumeSafe: 0
+    blend: 0
   changeMusicSkript1: {fileID: 0}
