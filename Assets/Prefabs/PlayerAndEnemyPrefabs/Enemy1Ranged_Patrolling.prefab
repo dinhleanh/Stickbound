@@ -24,7 +24,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7179460344169621123}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.1, y: -0.11, z: 0}
+  m_LocalPosition: {x: 0.1, y: -0.31, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -388,7 +388,7 @@ MonoBehaviour:
   velocityWorkspace: {x: 0, y: 0}
   touchDamageCooldown: 2
   touchDamage: 10
-  touchDamageWidth: 1
+  touchDamageWidth: 0.6
   touchDamageHeight: 4
   touchDamageCheck: {fileID: 8237054837548156629}
   moveStateData: {fileID: 11400000, guid: 3e70e1ec2012d6d44aa049e2a61f56dd, type: 2}
@@ -414,6 +414,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9881db3692d70c84db3cdc2280a353ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bossIsDead: 0
 --- !u!1 &7389452460959212788
 GameObject:
   m_ObjectHideFlags: 0

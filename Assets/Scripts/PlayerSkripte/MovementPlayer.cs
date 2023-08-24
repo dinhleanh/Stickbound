@@ -296,6 +296,8 @@ public class MovementPlayer : MonoBehaviour
         spriteRenderer = GetComponent<SpriteRenderer>();
         lineRenderer.positionCount = 0; // no lines showing nur für grapplemechanik
 
+        Vector3 rotator = new Vector3(transform.rotation.x, 180f, transform.rotation.z);
+        transform.rotation = Quaternion.Euler(rotator);
 
         animator = GetComponent<Animator>(); // Animation Controller Reference in Movement Script
     }
@@ -322,17 +324,17 @@ public class MovementPlayer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
-       if(playerStats.currentHealth <= 20f)
-        {
-            moveSpeed = 20f;
-            airMoveSpeed = 18f;
-        }
-        else
-        {
-            moveSpeed = 14f;
-            airMoveSpeed = 12f;
-        }
+        //Speedrun
+       //if(playerStats.currentHealth <= 20f)
+       // {
+       //     moveSpeed = 20f;
+       //     airMoveSpeed = 18f;
+       // }
+       // else
+       // {
+       //     moveSpeed = 14f;
+       //     airMoveSpeed = 12f;
+       // }
 
 
 
@@ -831,7 +833,7 @@ public class MovementPlayer : MonoBehaviour
         isDashing = true;
         tr.emitting = true;
         IsMoving = true;
-        playerStats.isInvulnerable = true;
+        //playerStats.isInvulnerable = true;
 
         Vector2 tempVector = rb.velocity;
         tempVector.y = 0f;
@@ -840,7 +842,7 @@ public class MovementPlayer : MonoBehaviour
         DashInputMethod();
 
         yield return new WaitForSeconds(dashingTime);
-        playerStats.isInvulnerable = false;
+        //playerStats.isInvulnerable = false;
         isDashing = false;
         isInDashCooldown = true;
 
