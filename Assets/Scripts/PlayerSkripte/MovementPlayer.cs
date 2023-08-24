@@ -354,7 +354,7 @@ public class MovementPlayer : MonoBehaviour
         //    }
         //}
 
-        if (IsGrounded && (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D)))
+        if (IsGrounded && (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D)) && !IsOnWall)
         {
             if (Time.time - lastFootstepTime >= footstepDelay)
             {

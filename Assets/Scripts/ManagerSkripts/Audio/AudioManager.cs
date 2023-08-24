@@ -9,7 +9,7 @@ public class AudioManager : MonoBehaviour
 
 
     public Sound[] sounds;
-    public AudioClip[] footstepSounds;
+    public Sound[] footstepSounds;
 
     private static AudioManager instance;
 
@@ -55,9 +55,22 @@ public class AudioManager : MonoBehaviour
             s.source.pitch = s.pitch;
             s.source.loop = s.loop;
             
+            
         }
 
-        
+        foreach (Sound s in footstepSounds)
+        {
+
+            s.source = gameObject.AddComponent<AudioSource>();
+            s.volumeSafe = s.volume;
+            s.source.clip = s.clip;
+            s.source.volume = s.volume;
+            s.source.pitch = s.pitch;
+            s.source.loop = s.loop;
+           
+        }
+
+
     }
 
     void Start()
@@ -84,6 +97,19 @@ public class AudioManager : MonoBehaviour
         
         s.source.Play();
         
+    }
+
+    public void PlayFootstepSound(string name)
+    {
+        Sound s = Array.Find(footstepSounds, sound => sound.nameOfSoundClip == name);
+        if (s == null)
+        {
+            Debug.LogWarning("Sound: " + name + " cannot be found!");
+            return;
+        }
+
+        s.source.Play();
+
     }
 
     public void MuteSound(string name)
@@ -114,12 +140,21 @@ public class AudioManager : MonoBehaviour
 
     public void PlayRandomFootStepSound()
     {
-        AudioClip footstepclip = GetRandomFootstepClip();
-        PlaySound(footstepclip.name); // Hier den Namen des Clips übergeben
+        Sound footstepSound = GetRandomFootstepSound();
+        if (footstepSound != null)
+        {
+            PlayFootstepSound(footstepSound.nameOfSoundClip);
+        }
     }
 
-    private AudioClip GetRandomFootstepClip()
+    private Sound GetRandomFootstepSound()
     {
+        if (footstepSounds.Length == 0)
+        {
+            Debug.LogWarning("No footstep sounds found!");
+            return null;
+        }
+
         int randomIndex = UnityEngine.Random.Range(0, footstepSounds.Length);
         return footstepSounds[randomIndex];
     }
