@@ -323,7 +323,16 @@ public class MovementPlayer : MonoBehaviour
     void Update()
     {
 
-       
+       if(playerStats.currentHealth <= 20f)
+        {
+            moveSpeed = 20f;
+            airMoveSpeed = 18f;
+        }
+        else
+        {
+            moveSpeed = 14f;
+            airMoveSpeed = 12f;
+        }
 
 
 

@@ -43,8 +43,8 @@ public class Spikes : MonoBehaviour
                 //canDamage = false;
                 //if (canDamage)
                 playerStats.DecreaseHealth(damageSpikes);
-
-                PlayerMove.KnockbackSpikes(knockback);
+               FindObjectOfType<AudioManager>().PlaySound("PlayerHit");
+            PlayerMove.KnockbackSpikes(knockback);
 
             }
         

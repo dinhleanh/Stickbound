@@ -341,6 +341,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7389452460700899793}
   - component: {fileID: 7389452460700899806}
+  - component: {fileID: 824467030235531188}
   m_Layer: 0
   m_Name: Enemy1Ranged_Patrolling
   m_TagString: Untagged
@@ -401,6 +402,18 @@ MonoBehaviour:
   rangedAttackStateData: {fileID: 11400000, guid: 8f8cfd4a089634e43880370129135746, type: 2}
   meleeAttackPosition: {fileID: 7389452460394960751}
   rangedAttackPosition: {fileID: 7389452460959212789}
+--- !u!114 &824467030235531188
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7389452460700899792}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9881db3692d70c84db3cdc2280a353ce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7389452460959212788
 GameObject:
   m_ObjectHideFlags: 0

@@ -149,11 +149,12 @@ public class FlyingEnemySelbstVersuch : MonoBehaviour
 
         if (isDead)
         {
-            AudioManager.Instance.MuteSound("Enemy2Idle");
+            
+            //AudioManager.Instance.MuteSound("Enemy2Idle");
         }
         else
         {
-            AudioManager.Instance.UnmuteSound("Enemy2Idle");
+            //AudioManager.Instance.UnmuteSound("Enemy2Idle");
         }
 
 
@@ -161,6 +162,7 @@ public class FlyingEnemySelbstVersuch : MonoBehaviour
         {
             if(!isDead)
             {
+                lastFootstepTime = Time.time; // Aktualisiere den Zeitstempel
                 if (isInSoundRange)
                 {
                     AudioManager.Instance.UnmuteSound("Enemy2Idle");
@@ -168,9 +170,9 @@ public class FlyingEnemySelbstVersuch : MonoBehaviour
                 }
                 else
                 {
-                    AudioManager.Instance.MuteSound("Enemy2Idle");
+                    //AudioManager.Instance.MuteSound("Enemy2Idle");
                 }
-                lastFootstepTime = Time.time; // Aktualisiere den Zeitstempel
+                
             }
             
         }
@@ -274,8 +276,9 @@ public class FlyingEnemySelbstVersuch : MonoBehaviour
     public void Damage (AttackDetails details)
     {
         currentHealth -= details.damageAmount;
-        
-        if(currentHealth <= 0)
+        AudioManager.Instance.PlaySound("EnemyDestroyed");
+
+        if (currentHealth <= 0)
         {
             Die();
         }
@@ -283,8 +286,14 @@ public class FlyingEnemySelbstVersuch : MonoBehaviour
 
     private void Die()
     {
+
+
+        AudioManager.Instance.MuteSound("Enemy2Idle");
+        lastFootstepTime = float.MaxValue; // Setze die Verzögerung auf einen hohen Wert, um zukünftige Fußschritte zu verhindern
         isDead = true;
         aliveV2.gameObject.SetActive(false);
+
+
     }
 
 
