@@ -55,5 +55,6 @@ public class E1V2_RangedAttackState : RangedAttackState
     public override void TriggerAttack()
     {
         base.TriggerAttack();
+        AudioManager.Instance.PlaySound("EnemyRangedAttack");
     }
 }

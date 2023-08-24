@@ -56,6 +56,6 @@ public class E1V2_MeleeAttackState : MeleeAttackState
     public override void TriggerAttack()
     {
         base.TriggerAttack();
-       
+        
     }
 }

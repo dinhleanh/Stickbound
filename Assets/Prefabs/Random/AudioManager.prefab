@@ -133,6 +133,14 @@ MonoBehaviour:
     source: {fileID: 0}
     volumeSafe: 0
     blend: 0.266
+  - nameOfSoundClip: EnemyRangedAttack
+    clip: {fileID: 8300000, guid: b87c7b75aa2162740add910459bce67e, type: 3}
+    volume: 0.158
+    pitch: 0.89
+    loop: 0
+    source: {fileID: 0}
+    volumeSafe: 0
+    blend: 0
   footstepSounds:
   - nameOfSoundClip: Footstep1
     clip: {fileID: 8300000, guid: 6e048338c45edb746a0c905cc3a4dc5e, type: 3}
