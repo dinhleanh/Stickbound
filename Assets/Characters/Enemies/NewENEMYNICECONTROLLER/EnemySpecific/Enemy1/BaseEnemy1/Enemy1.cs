@@ -126,7 +126,23 @@ public class Enemy1 : Entity
     public override void Respawn()
     {
         base.Respawn();
-        stateMachine.Initialize(moveState);
+
+        meleeAttackState.FinishAttack();
+        
+        if (stateMachine.currentState == meleeAttackState)
+        {
+            stateMachine.ChangeState(moveState);
+        }
+        else if (stateMachine.currentState == meleeAttackState)
+        {
+
+            stateMachine.ChangeState(moveState);
+        }
+        else
+        {
+            stateMachine.Initialize(moveState);
+        }
+        
         
     }
 

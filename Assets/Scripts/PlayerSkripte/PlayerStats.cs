@@ -31,11 +31,20 @@ public class PlayerStats : MonoBehaviour
 
         if(isInvulnerable)
         {
-            spriteRenderer.color = Color.red;
+            Color currentColor = spriteRenderer.color;
+            currentColor.a = 0.5f;
+            spriteRenderer.color = currentColor;
+
+
+
+            spriteRenderer.color = Color.green;
 
         }
         else
         {
+            Color currentColor = spriteRenderer.color;
+            currentColor.a = 1f;
+            spriteRenderer.color = currentColor;
             spriteRenderer.color = Color.white;
         }
 

@@ -282,7 +282,7 @@ public class Entity : MonoBehaviour
         if (gameManager.respawn && aliveGO.activeInHierarchy == false)
         {
             isDead = false;
-            aliveGO.transform.position = StartPos;
+            //aliveGO.transform.position = StartPos;
             Debug.Log(StartPos + "StartPos");
             Debug.Log(aliveGO.transform.position + "Transform alive");
             //aliveGO.transform.position = StartPos.position;

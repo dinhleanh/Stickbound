@@ -119,7 +119,24 @@ public class Enemy1Ranged : Entity
     public override void Respawn()
     {
         base.Respawn();
-        stateMachine.Initialize(moveState);
+        meleeAttackState.FinishAttack();
+        rangedAttackState.FinishAttack();
+        if (stateMachine.currentState == meleeAttackState)
+        {
+            stateMachine.ChangeState(moveState);
+        }
+        else if(stateMachine.currentState == meleeAttackState)
+        {
+
+            stateMachine.ChangeState(moveState);
+        }
+        else
+        {
+            stateMachine.Initialize(moveState);
+        }
+
+       
+        //stateMachine.Initialize(moveState);
         //Debug.Log(StartPos.position);
 
         //dodgeStateData.dodgeCooldown = 3f;
