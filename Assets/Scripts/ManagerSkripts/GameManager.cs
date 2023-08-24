@@ -17,6 +17,7 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private MovementPlayer playerMove;
     [SerializeField]
+    
     private float respawnTime;
 
     private float respawnTimeStart;
@@ -45,7 +46,7 @@ public class GameManager : MonoBehaviour
         cinemachineVirtualCamera = GameObject.Find("OpenRoomMainCamera").GetComponent<CinemachineVirtualCamera>();
 
         cameraManager = GameObject.Find("Cameras").GetComponent<CameraManager>();
-
+        
         playerStats = GameObject.Find("Player").GetComponent<PlayerStats>();
         playerCombat = GameObject.Find("Player").GetComponent<PlayerCombatTry>();
         playerMove = GameObject.Find("Player").GetComponent<MovementPlayer>();
@@ -131,7 +132,9 @@ public class GameManager : MonoBehaviour
             //playerCombat.isAttacking = false;
             playerCombat.FinishAttack1();
             playerStats.ResetHealth();
-
+            
+            
+            
             rb.velocity = Vector2.zero;
 
 

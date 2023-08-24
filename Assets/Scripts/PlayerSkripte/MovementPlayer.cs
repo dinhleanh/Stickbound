@@ -262,7 +262,7 @@ public class MovementPlayer : MonoBehaviour
 
     [Header("flip the scale")]
     [SerializeField]
-    private bool _isFacingRight = true;
+    private bool _isFacingRight = false;
 
     public bool IsFacingRight
     {
