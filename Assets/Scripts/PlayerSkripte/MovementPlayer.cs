@@ -1130,15 +1130,18 @@ public class MovementPlayer : MonoBehaviour
                 StartCoroutine(GrappleCooldown());
             }
 
-            else if (isDashing && IsGrappling && didGrappleHit)
+            else if (IsGrappling)
             {
-                
-                IsGrappling = false;
-                
-                IsInGrapplingCooldown = true;
-                StartCoroutine(GrappleCooldown());
-                Detatch();
-                StartCoroutine(DashingAbility());
+                if(isDashing && didGrappleHit)
+                {
+                    IsGrappling = false;
+
+                    IsInGrapplingCooldown = true;
+                    StartCoroutine(GrappleCooldown());
+                    Detatch();
+                    StartCoroutine(DashingAbility());
+                }
+               
 
             }
 
