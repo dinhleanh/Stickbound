@@ -62,7 +62,7 @@ public class Entity : MonoBehaviour
     protected bool isDead;
 
 
-    private GameManager gameManager;
+    public GameManager gameManager;
 
 
 

@@ -33,7 +33,12 @@ public class E1V2_RangedAttackState : RangedAttackState
     public override void LogicUpdate()
     {
         base.LogicUpdate();
-
+        if (entity.gameManager.respawn)
+        {
+            FinishAttack();
+            stateMachine.ChangeState(enemy.moveState);
+        }
+        
         if(isAnimationFinished)
         {
             if(isPlayerinMinAgrorange)
@@ -55,6 +60,10 @@ public class E1V2_RangedAttackState : RangedAttackState
     public override void TriggerAttack()
     {
         base.TriggerAttack();
-        AudioManager.Instance.PlaySound("EnemyRangedAttack");
+        if (!entity.gameManager.respawn)
+        {
+            AudioManager.Instance.PlaySound("EnemyRangedAttack");
+        }
+        
     }
 }

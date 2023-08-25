@@ -63,6 +63,8 @@ public class Enemy1Ranged : Entity
     [SerializeField]
     private Transform rangedAttackPosition;
 
+    public BossHealthbarUI healthBarUI;
+
 
     public override void  Start()
     {
@@ -88,7 +90,10 @@ public class Enemy1Ranged : Entity
     {
         base.Damage(attackDetails);
 
-        if(isDead)
+        
+
+
+        if (isDead)
         {
             stateMachine.ChangeState(deadState);
         }
@@ -113,7 +118,7 @@ public class Enemy1Ranged : Entity
         //    dodgeStateData.dodgeSpeed = 30f;
         //}
 
-        
+        healthBarUI.UpdateHealthBar(currentHealth, entityData.maxHealth);
     }
 
     public override void Respawn()
@@ -134,13 +139,13 @@ public class Enemy1Ranged : Entity
         {
             stateMachine.Initialize(moveState);
         }
+        healthBarUI.UpdateHealthBar(currentHealth, entityData.maxHealth);
 
-       
         //stateMachine.Initialize(moveState);
         //Debug.Log(StartPos.position);
 
         //dodgeStateData.dodgeCooldown = 3f;
-       // dodgeStateData.dodgeSpeed = 25f;
+        // dodgeStateData.dodgeSpeed = 25f;
     }
 
     public override void OnDrawGizmos()
@@ -159,7 +164,12 @@ public class Enemy1Ranged : Entity
     {
         //base.DamageHop(velocity, damageDirection);
         isHopping = true;
-        velocityWorkspace.Set(4 * damageDirection, velocity);
+        velocityWorkspace.Set(0 , velocity);
         rb.velocity = velocityWorkspace;
+    }
+
+    public override void CheckTouchDamage()
+    {
+        
     }
 }
