@@ -273,7 +273,8 @@ public class FlyingEnemySelbstVersuch : MonoBehaviour
     {
         
         currentHealth = maxHealth;
-        aliveV2.transform.position = patrolPoints[0].position;
+        transform.position= patrolPoints[0].position;
+        
         aliveV2.SetActive(true);
         Patrol();
         isDead = false;
