@@ -15,7 +15,7 @@ public class BossHealthbarUI : MonoBehaviour
         healthSlider.value = healthPercentage;
 
         // Zeige den Health-Text im Format "currentHealth/maxHealth" an
-        healthText.text = $"{maxHealth}/{currentHealth}";
+        healthText.text = $"{currentHealth}/{maxHealth}";
     }
 
     public void ShowHealthBar(bool show)

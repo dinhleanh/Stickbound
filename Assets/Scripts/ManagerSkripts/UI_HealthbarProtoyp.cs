@@ -34,7 +34,7 @@ public class UI_HealthbarProtoyp : MonoBehaviour
         slider.value = fillValue;
 
         // Aktualisiere den Gesundheitswert im Text im Format "maxHealth/currentHealth"
-        healthText.text = $"{playerStats.maxHealth}/{playerStats.currentHealth}";
+        healthText.text = $"{playerStats.currentHealth}/{playerStats.maxHealth}";
     }
 }
 

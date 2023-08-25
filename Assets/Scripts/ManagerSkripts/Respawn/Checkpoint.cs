@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Rendering.Universal;
 
 public class Checkpoint : MonoBehaviour
 {
@@ -9,16 +10,22 @@ public class Checkpoint : MonoBehaviour
 
     private SpriteRenderer spriteRenderer;
 
-    
+    public Light2D lightCheckpoint;
 
     private PlayerStats playerStats;
+
+    public GameObject particlesCheckpoint;
+
+
+
 
     private void Start()
     {
         
         playerStats = GameObject.Find("Player").GetComponent<PlayerStats>();
+        lightCheckpoint.enabled = false;
+        particlesCheckpoint.SetActive(false);
 
-        
         spriteRenderer =GetComponent<SpriteRenderer>();
         checkpointManager = FindObjectOfType<CheckPointManager>();
         checkpointManager.RegisterCheckpoint(this);
@@ -39,7 +46,8 @@ public class Checkpoint : MonoBehaviour
                 playerStats.currentHealth = playerStats.currentHealth + 10f;
             }
 
-
+            particlesCheckpoint.SetActive(true);
+            lightCheckpoint.enabled = true;
             spriteRenderer.sprite = sprites[0];
             spriteRenderer.color = Color.yellow;
             FindObjectOfType<AudioManager>().PlaySound("CheckPointAberEigDash");
