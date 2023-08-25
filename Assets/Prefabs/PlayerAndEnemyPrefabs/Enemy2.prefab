@@ -78,7 +78,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 2
-  m_Sprite: {fileID: 249573834, guid: 4e4c49706edbb9f499d879689c109f80, type: 3}
+  m_Sprite: {fileID: 911232306, guid: e787effaee215eb4ca7cc475f69a6267, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -244,13 +244,16 @@ MonoBehaviour:
   animator: {fileID: 0}
   footstepDelay: 0.3
   SoundRange: 15
+  spriteRenderer: {fileID: 0}
+  normalSprite: {fileID: 911232306, guid: e787effaee215eb4ca7cc475f69a6267, type: 3}
+  hitSprite: {fileID: 21300000, guid: f9d717bcb7baf1d47bd7264ce16ae3cf, type: 3}
   speed: 8
   patrolPoints:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  waitTime: 0.8
+  waitTime: 0.4
   WhatIsPlayer:
     serializedVersion: 2
     m_Bits: 64

@@ -30,7 +30,10 @@ public class FlyingEnemySelbstVersuch : MonoBehaviour
 
 
 
+    public SpriteRenderer spriteRenderer; // Referenz auf den SpriteRenderer
 
+    public Sprite normalSprite; // Das ursprüngliche Sprite
+    public Sprite hitSprite;    // Das Sprite während des Treffers
 
 
 
@@ -56,6 +59,7 @@ public class FlyingEnemySelbstVersuch : MonoBehaviour
     {
 
         aliveV2 = transform.Find("AliveV2").gameObject;
+        spriteRenderer = aliveV2.GetComponent<SpriteRenderer>();
         animator = aliveV2.GetComponent<Animator>();
         rb = aliveV2.GetComponent<Rigidbody2D>();
         player = GameObject.FindGameObjectWithTag("Player");
@@ -77,6 +81,8 @@ public class FlyingEnemySelbstVersuch : MonoBehaviour
             isAttacking = false; // Zurücksetzen der isAttacking-Variable
             animator.SetBool("attacking", false); // Deaktivieren der Attack-Animation
         }
+
+        
     }
 
     private void MoveAndShoot()
@@ -276,11 +282,20 @@ public class FlyingEnemySelbstVersuch : MonoBehaviour
     public void Damage (AttackDetails details)
     {
         currentHealth -= details.damageAmount;
+        animator.SetBool("hit", true);
         AudioManager.Instance.PlaySound("EnemyDestroyed");
 
         if (currentHealth <= 0)
         {
             Die();
+        }
+        else
+        {
+            // Wechsel zum Hit-Sprite
+            spriteRenderer.sprite = hitSprite;
+
+            // Setze einen Timer oder Coroutine, um das Sprite zurück zum normalen Sprite zu wechseln
+            StartCoroutine(ChangeToNormalSprite());
         }
     }
 
@@ -294,6 +309,13 @@ public class FlyingEnemySelbstVersuch : MonoBehaviour
         aliveV2.gameObject.SetActive(false);
 
 
+    }
+
+    private IEnumerator ChangeToNormalSprite()
+    {
+        yield return new WaitForSeconds(0.2f); // Warte für die Dauer des Hit-Sprites (optional)
+        animator.SetBool("hit", false);
+        spriteRenderer.sprite = normalSprite; // Wechsle zurück zum normalen Sprite
     }
 
 
