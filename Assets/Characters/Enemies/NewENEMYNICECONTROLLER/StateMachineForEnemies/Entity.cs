@@ -231,7 +231,6 @@ public class Entity : MonoBehaviour
             velocityWorkspace.Set(2 * damageDirection, velocity);
             rb.velocity = velocityWorkspace;
 
-        
     }
 
     public virtual void Damage(AttackDetails attackDetails)
@@ -240,8 +239,8 @@ public class Entity : MonoBehaviour
 
         currentHealth -= attackDetails.damageAmount;
         currentStunResistance -= attackDetails.stunDamageAmount;
+        AudioManager.Instance.PlaySound("EnemyDestroyed");
 
-        
 
 
         //isHopping = false;

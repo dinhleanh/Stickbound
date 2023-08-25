@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Rendering;
 using UnityEngine;
+using UnityEngine.Rendering.Universal;
 //using UnityEngine.SceneManagement;
 
 public class PlayerStats : MonoBehaviour
@@ -9,7 +11,13 @@ public class PlayerStats : MonoBehaviour
 
     public float currentHealth;
 
-    
+    public Light2D light1;
+    public Light2D light2;
+
+    private Color originalLight1Color;
+    private Color originalLight2Color;
+
+
     SpriteRenderer spriteRenderer;
     private GameManager gameManager;
 
@@ -22,6 +30,10 @@ public class PlayerStats : MonoBehaviour
         spriteRenderer = GetComponent<SpriteRenderer>();
         currentHealth = maxHealth;
         gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+
+
+        originalLight1Color = light1.color;
+        originalLight2Color = light2.color;
     }
 
     private void Update()
@@ -31,21 +43,26 @@ public class PlayerStats : MonoBehaviour
 
         if(isInvulnerable)
         {
-            Color currentColor = spriteRenderer.color;
-            currentColor.a = 0.5f;
-            spriteRenderer.color = currentColor;
+            //Color currentColor = spriteRenderer.color;
+            //currentColor.a = 0.5f;
+            //spriteRenderer.color = currentColor;
 
 
+            light1.color = Color.red;
+            light2.color = Color.red;
 
-            spriteRenderer.color = Color.green;
+
+            //spriteRenderer.color = Color.green;
 
         }
         else
         {
-            Color currentColor = spriteRenderer.color;
-            currentColor.a = 1f;
-            spriteRenderer.color = currentColor;
-            spriteRenderer.color = Color.white;
+            //Color currentColor = spriteRenderer.color;
+            //currentColor.a = 1f;
+            //spriteRenderer.color = currentColor;
+            //spriteRenderer.color = Color.white;
+            light1.color = originalLight1Color;
+            light2.color = originalLight2Color;
         }
 
     }
