@@ -8,6 +8,8 @@ public class BossHealthbarUI : MonoBehaviour
     public Image fillImage; // Referenz auf das FillImage des Sliders
     public TextMeshProUGUI healthText;
 
+    public EndBossIsDead endBossDead;
+
     public void UpdateHealthBar(float currentHealth, float maxHealth)
     {
         // Aktualisiere die Healthbar basierend auf den Healthwerten
@@ -20,13 +22,23 @@ public class BossHealthbarUI : MonoBehaviour
 
     public void ShowHealthBar(bool show)
     {
+        
+            healthText.gameObject.SetActive(show);
+            healthSlider.gameObject.SetActive(show);
+        
         // Zeige oder blende die Healthbar basierend auf "show" ein oder aus
-        healthText.gameObject.SetActive(show);
-        healthSlider.gameObject.SetActive(show);
+       
     }
 
     private void Update()
     {
+
+        if (endBossDead.bossIsDead)
+        {
+            ShowHealthBar(false);
+        }
+
+
         //Wenn low on Health
         if (healthSlider.value <= healthSlider.minValue)
         {

@@ -81,12 +81,15 @@ public class PlayerStats : MonoBehaviour
 
         if (!isInvulnerable)
         {
+            
             currentHealth -= amount;
             Debug.Log("Current Health: " + currentHealth);
 
             if (currentHealth <= 0.0f)
             {
+                currentHealth = 0f;
                 Die();
+                
             }
             else
             {
