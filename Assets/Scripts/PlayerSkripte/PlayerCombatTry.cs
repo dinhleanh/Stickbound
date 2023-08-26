@@ -139,7 +139,7 @@ public class PlayerCombatTry : MonoBehaviour
             int direction;
 
             PS.DecreaseHealth(attackDetails.damageAmount);
-            FindObjectOfType<AudioManager>().PlaySound("PlayerHit");
+            
 
             if (attackDetails.position.x < transform.position.x)
             {

@@ -23,7 +23,7 @@ public class BossHealthbarUI : MonoBehaviour
     public void ShowHealthBar(bool show)
     {
         
-            healthText.gameObject.SetActive(show);
+            //healthText.gameObject.SetActive(show);
             healthSlider.gameObject.SetActive(show);
         
         // Zeige oder blende die Healthbar basierend auf "show" ein oder aus
