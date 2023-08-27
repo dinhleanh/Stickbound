@@ -28,7 +28,15 @@ public class MovementPlayer : MonoBehaviour
     #endregion
 
 
-    
+    public AnimationClip wakeUpAnimation;
+    public AnimationClip idleAnimation;
+    private bool hasPlayedWakeUp = false;
+
+
+
+
+
+
 
     public float footstepDelay = 0.3f; // Die Verzögerung zwischen den Fußschritten
     private float lastFootstepTime;
@@ -307,6 +315,9 @@ public class MovementPlayer : MonoBehaviour
 
     void Start()
     {
+
+        PlayWakeUpAnimation();
+
         if (CameraManager.instance == null)
         {
             throw new NullReferenceException("CameraManager.instance is not assigned.");
@@ -365,7 +376,7 @@ public class MovementPlayer : MonoBehaviour
         //    }
         //}
 
-        if (IsGrounded && (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D)) && !IsOnWall)
+        if (IsGrounded && (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D)) && !IsOnWall && hasPlayedWakeUp)
         {
             if (Time.time - lastFootstepTime >= footstepDelay)
             {
@@ -395,7 +406,7 @@ public class MovementPlayer : MonoBehaviour
     {
 
         // !isONWALL BEEINTRÄCHTIGT DEN GEGNER BUG
-        if (!isDashing && !isInDashCooldown && !IsGrappling && !IsInGrapplingCooldown && !knockback && !playerCombat.isAttacking)
+        if (!isDashing && !isInDashCooldown && !IsGrappling && !IsInGrapplingCooldown && !knockback && !playerCombat.isAttacking && hasPlayedWakeUp)
         {
 
             if (!IsGrounded && !knockback && canDash)
@@ -578,8 +589,9 @@ public class MovementPlayer : MonoBehaviour
     // Rotation nicht mit scale = -1 sondern rotation !!!
     private void Turn()
     {
-        
-        
+
+        if (hasPlayedWakeUp)
+        {
             if (IsFacingRight)
             {
                 Vector3 rotator = new Vector3(transform.rotation.x, 180f, transform.rotation.z);
@@ -609,6 +621,8 @@ public class MovementPlayer : MonoBehaviour
 
                 //_cameraFollowObject.CallTurn();
             }
+        }
+            
         
 
 
@@ -621,13 +635,33 @@ public class MovementPlayer : MonoBehaviour
 
 
     #region try out animations
+
+    private void PlayWakeUpAnimation()
+    {
+        if (!hasPlayedWakeUp)
+        {
+            animator.Play(wakeUpAnimation.name);
+            
+
+        }
+    }
+
+    public void StopWakeUp()
+    {
+
+        hasPlayedWakeUp = true;
+        animator.SetBool("idle", true);
+        animator.Play(idleAnimation.name);
+    }
+
+
     private void IsMove()
     {
-        if (IsMoving && IsGrounded && !isDashing && !IsGrappling)
+        if (IsMoving && IsGrounded && !isDashing && !IsGrappling && hasPlayedWakeUp)
         {
             animator.SetBool("run", true);
         }
-        else if (IsMoving && !IsGrounded && !isDashing && !IsGrappling)
+        else if (IsMoving && !IsGrounded && !isDashing && !IsGrappling && hasPlayedWakeUp)
         {
             animator.SetBool("run", false);
         }
@@ -724,7 +758,7 @@ public class MovementPlayer : MonoBehaviour
         }
 
         // Main Jump
-        if (coyoteTimeCounter > 0f && jumpBufferTimeCounter > 0f && canJump)   // Vorher:  context.started && IsGrounded
+        if (coyoteTimeCounter > 0f && jumpBufferTimeCounter > 0f && canJump && hasPlayedWakeUp)   // Vorher:  context.started && IsGrounded
         {
             FindObjectOfType<AudioManager>().PlaySound("PlayerJump");
             rb.gravityScale = gravityScale;
@@ -790,7 +824,7 @@ public class MovementPlayer : MonoBehaviour
     #region Dash
     public void OnDash(InputAction.CallbackContext context)
     {
-        if (context.started && canDash == true)
+        if (context.started && canDash == true && hasPlayedWakeUp)
         {
             StartCoroutine(DashingAbility());
         }
