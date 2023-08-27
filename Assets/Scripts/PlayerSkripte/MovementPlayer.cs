@@ -28,6 +28,12 @@ public class MovementPlayer : MonoBehaviour
     #endregion
 
 
+    public bool couldGrappleHit;
+
+
+
+
+
     public AnimationClip wakeUpAnimation;
     public AnimationClip idleAnimation;
     public bool hasPlayedWakeUp = false;
@@ -349,7 +355,35 @@ public class MovementPlayer : MonoBehaviour
         //     airMoveSpeed = 12f;
         // }
 
-        
+        RaycastHit2D falseHit = Physics2D.Raycast(rb.position, GetMousePositionAndReturnDirection(), maxGrappleLength, WhatYouShouldNotGrappleOnTo);
+        RaycastHit2D hit = Physics2D.Raycast(rb.position, GetMousePositionAndReturnDirection(), maxGrappleLength, WhatYouCanGrappleOnTo);
+
+        if (hit.collider != null && falseHit.collider != null)
+        {
+            float distanceToHookable = Vector2.Distance(transform.position, hit.point);
+            float distanceToCancelHook = Vector2.Distance(transform.position, falseHit.point);
+
+
+            if (distanceToCancelHook < distanceToHookable)
+            {
+                couldGrappleHit = false;
+
+            }
+            else
+            {
+                couldGrappleHit = true;
+            }
+        }
+        else if(hit.collider != null)
+        {
+            couldGrappleHit = true;
+        }
+        else
+        {
+            couldGrappleHit = false;
+        }
+
+
 
         // Raycasts hier fehlt noch IsOnCeiling
         //IsGrounded = touchingCol.Cast(Vector2.down, CastFilter, groundHits, groundDistance) > 0;
@@ -358,6 +392,7 @@ public class MovementPlayer : MonoBehaviour
         IsGrounded = touchingCol.Cast(Vector2.down, CastFilter, groundHits, groundDistance) > 0;
         IsOnWall = touchingCol.Cast(WallCheckDirection, CastFilter, wallHits, wallDistance) > 0;
 
+        Debug.Log(couldGrappleHit);
         //Animation Parameters
 
         //Time.timeScale = 0.5f;

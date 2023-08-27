@@ -37,7 +37,7 @@ public class CustomCursorController : MonoBehaviour
                 Cursor.SetCursor(cursorTexture[2], new Vector2(cursorTexture[2].width / 2f, cursorTexture[2].height / 2f), CursorMode.Auto);
             }
             else
-            if (movementPlayer.IsInGrappleRange())
+            if (movementPlayer.couldGrappleHit)
             {
                 Cursor.visible = true;
                 Cursor.lockState = CursorLockMode.Confined;

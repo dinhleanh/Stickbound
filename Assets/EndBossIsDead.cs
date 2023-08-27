@@ -27,7 +27,7 @@ public class EndBossIsDead : MonoBehaviour
                 bossIsDead = false;
             }
         }
-        Debug.Log(bossIsDead);
+        //Debug.Log(bossIsDead);
     }
 }
 
