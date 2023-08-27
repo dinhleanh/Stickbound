@@ -22,7 +22,7 @@ MonoBehaviour:
   playerBehindCheckDistance: 8
   stunResistance: 3
   stunRecoveryTime: 2
-  closeRangeActionDistance: 4
+  closeRangeActionDistance: 5.5
   hitParticle: {fileID: 294022126639822600, guid: c9116bcefbdbda142acb06d7736a8ab5, type: 3}
   whatisGround:
     serializedVersion: 2

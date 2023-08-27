@@ -38,7 +38,7 @@ public class Entity : MonoBehaviour
     [SerializeField]
     public Transform playerBehindCheck;
 
-    private Vector3 StartPos;
+    public Transform StartPos;
 
 
 
@@ -103,7 +103,7 @@ public class Entity : MonoBehaviour
         anim = aliveGO.GetComponent<Animator>();
         atsm = aliveGO.GetComponent<AnimationToStateMachine>();
         
-        StartPos = aliveGO.transform.position;
+        //StartPos = aliveGO.transform;
         //StartPos.position = aliveGO.transform.position;
 
         stateMachine = new FiniteStateMachine();
@@ -281,7 +281,7 @@ public class Entity : MonoBehaviour
         if (gameManager.respawn && aliveGO.activeInHierarchy == false)
         {
             isDead = false;
-            //aliveGO.transform.position = StartPos;
+            aliveGO.transform.position = StartPos.position;
             Debug.Log(StartPos + "StartPos");
             Debug.Log(aliveGO.transform.position + "Transform alive");
             //aliveGO.transform.position = StartPos.position;
