@@ -12,7 +12,7 @@ public class PauseMenu : MonoBehaviour
 
     public GameObject pauseMenuUI;
 
-
+    
 
     
     
@@ -55,6 +55,9 @@ public class PauseMenu : MonoBehaviour
     public void LoadMenu()
     {
         SceneManager.LoadScene("MainMenu");
+        AudioManager.Instance.MuteSound("CaveBoss");
+        AudioManager.Instance.UnmuteSound("Theme");
+        AudioManager.Instance.PlaySound("Theme");
         Time.timeScale = 1;
     }
 
