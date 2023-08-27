@@ -60,6 +60,16 @@ public class PlayerCombatTry : MonoBehaviour
         CheckCombatInput();
         CheckAttack();
 
+        if(PL.hasPlayedWakeUp)
+        {
+            combatEnabled = true;
+        }
+        else
+        {
+            combatEnabled= false;
+        }
+
+
         
     }
     private void CheckCombatInput()

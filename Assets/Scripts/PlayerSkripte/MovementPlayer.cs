@@ -30,7 +30,7 @@ public class MovementPlayer : MonoBehaviour
 
     public AnimationClip wakeUpAnimation;
     public AnimationClip idleAnimation;
-    private bool hasPlayedWakeUp = false;
+    public bool hasPlayedWakeUp = false;
 
 
 
@@ -308,6 +308,8 @@ public class MovementPlayer : MonoBehaviour
         transform.rotation = Quaternion.Euler(rotator);
 
         animator = GetComponent<Animator>(); // Animation Controller Reference in Movement Script
+
+        hasPlayedWakeUp = false;
     }
 
 
@@ -336,18 +338,18 @@ public class MovementPlayer : MonoBehaviour
     void Update()
     {
         //Speedrun
-       //if(playerStats.currentHealth <= 20f)
-       // {
-       //     moveSpeed = 20f;
-       //     airMoveSpeed = 18f;
-       // }
-       // else
-       // {
-       //     moveSpeed = 14f;
-       //     airMoveSpeed = 12f;
-       // }
+        //if(playerStats.currentHealth <= 20f)
+        // {
+        //     moveSpeed = 20f;
+        //     airMoveSpeed = 18f;
+        // }
+        // else
+        // {
+        //     moveSpeed = 14f;
+        //     airMoveSpeed = 12f;
+        // }
 
-
+        
 
         // Raycasts hier fehlt noch IsOnCeiling
         //IsGrounded = touchingCol.Cast(Vector2.down, CastFilter, groundHits, groundDistance) > 0;
