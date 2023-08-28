@@ -160,4 +160,17 @@ public class AudioManager : MonoBehaviour
         int randomIndex = UnityEngine.Random.Range(0, footstepSounds.Length);
         return footstepSounds[randomIndex];
     }
+
+    public void SetMasterVolume(float volume)
+    {
+        foreach (Sound s in sounds)
+        {
+            s.source.volume = s.volumeSafe * volume;
+        }
+
+        foreach (Sound s in footstepSounds)
+        {
+            s.source.volume = s.volumeSafe * volume;
+        }
+    }
 }
