@@ -206,7 +206,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &25519670
 MonoBehaviour:
@@ -419,19 +419,8 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &214355569 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2982150407033424411, guid: b870fab95bdace442bdeaf2956b8503c, type: 3}
-  m_PrefabInstance: {fileID: 1349846450}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 60736a3c5adea814db8828473af365df, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &227266615
 GameObject:
   m_ObjectHideFlags: 0
@@ -1310,6 +1299,51 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 446602763}
   m_CullTransparentMesh: 1
+--- !u!1 &448173492
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 448173494}
+  - component: {fileID: 448173493}
+  m_Layer: 0
+  m_Name: AudioSettings
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &448173493
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 448173492}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c882d4e2befceb14286ada8d40c6680f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  masterVolume: 1
+--- !u!4 &448173494
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 448173492}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &462850156
 GameObject:
   m_ObjectHideFlags: 0
@@ -4782,7 +4816,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2982150407033424410, guid: b870fab95bdace442bdeaf2956b8503c, type: 3}
       propertyPath: m_RootOrder
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2982150407033424410, guid: b870fab95bdace442bdeaf2956b8503c, type: 3}
       propertyPath: m_LocalPosition.x
@@ -5017,9 +5051,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1380937447}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: de42551b8fa69624889859a9687050b2, type: 3}
+  m_Script: {fileID: 11500000, guid: 5d0004f90f4462f43902b7f76cc3cc18, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  audioSlider: {fileID: 2118695575}
 --- !u!1 &1392784380
 GameObject:
   m_ObjectHideFlags: 0
@@ -5423,7 +5458,7 @@ RectTransform:
   - {fileID: 1380937448}
   - {fileID: 1599751489}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -6639,7 +6674,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2080497579
 GameObject:
@@ -6884,9 +6919,9 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 214355569}
-        m_TargetAssemblyTypeName: AudioManager, Assembly-CSharp
-        m_MethodName: SetMasterVolume
+      - m_Target: {fileID: 1380937449}
+        m_TargetAssemblyTypeName: OptionsMenu, Assembly-CSharp
+        m_MethodName: OnAudioSliderValueChanged
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
