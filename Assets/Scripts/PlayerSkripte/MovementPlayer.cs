@@ -392,7 +392,7 @@ public class MovementPlayer : MonoBehaviour
         IsGrounded = touchingCol.Cast(Vector2.down, CastFilter, groundHits, groundDistance) > 0;
         IsOnWall = touchingCol.Cast(WallCheckDirection, CastFilter, wallHits, wallDistance) > 0;
 
-        Debug.Log(couldGrappleHit);
+        //Debug.Log(couldGrappleHit);
         //Animation Parameters
 
         //Time.timeScale = 0.5f;
