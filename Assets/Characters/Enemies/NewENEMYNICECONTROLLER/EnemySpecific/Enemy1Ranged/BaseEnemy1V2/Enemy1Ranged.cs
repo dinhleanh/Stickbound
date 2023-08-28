@@ -90,7 +90,7 @@ public class Enemy1Ranged : Entity
     {
         base.Damage(attackDetails);
 
-        
+
 
 
         if (isDead)
@@ -98,19 +98,25 @@ public class Enemy1Ranged : Entity
             stateMachine.ChangeState(deadState);
         }
         else
-        if(isStunned && stateMachine.currentState != stunState)
+        if (isStunned && stateMachine.currentState != stunState)
         {
             stateMachine.ChangeState(stunState);
-        }
-        else if (CheckPlayerInMinAgroRange())
-        {
-            stateMachine.ChangeState(meleeAttackState);
         }
         else if (!CheckPlayerInMinAgroRange())
         {
             lookForPlayerState.SetTurnImmediately(true);
             stateMachine.ChangeState(lookForPlayerState);
         }
+        else if (CheckPlayerInMaxAgroRange() && stateMachine.currentState == rangedAttackState)
+        {
+            stateMachine.ChangeState(rangedAttackState);
+        }
+        else if (CheckPlayerInMinAgroRange() && stateMachine.currentState == meleeAttackState)
+        {
+            stateMachine.ChangeState(meleeAttackState);
+        }
+        
+
         //else
         //if(currentHealth <= 40f)
         //{

@@ -228,7 +228,7 @@ public class Entity : MonoBehaviour
     {
         
             isHopping = true;
-            velocityWorkspace.Set(2 * damageDirection, velocity);
+            velocityWorkspace.Set(1.5f * damageDirection, velocity);
             rb.velocity = velocityWorkspace;
 
     }
