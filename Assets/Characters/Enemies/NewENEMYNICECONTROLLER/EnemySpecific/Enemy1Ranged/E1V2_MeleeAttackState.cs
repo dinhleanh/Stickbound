@@ -56,6 +56,9 @@ public class E1V2_MeleeAttackState : MeleeAttackState
     public override void TriggerAttack()
     {
         base.TriggerAttack();
-        
+        if (!entity.gameManager.respawn)
+        {
+            AudioManager.Instance.PlaySound("BossMeleeAttack");
+        }
     }
 }

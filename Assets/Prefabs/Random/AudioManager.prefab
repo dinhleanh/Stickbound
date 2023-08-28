@@ -94,7 +94,7 @@ MonoBehaviour:
     volumeSafe: 0
     blend: 0
   - nameOfSoundClip: CheckPointAberEigDash
-    clip: {fileID: 8300000, guid: d0f6535da60aa31468bd700a80ee222b, type: 3}
+    clip: {fileID: 8300000, guid: 8e56a742bc4b6124d87a93741246b441, type: 3}
     volume: 0.165
     pitch: 1
     loop: 0
@@ -143,6 +143,14 @@ MonoBehaviour:
     blend: 0
   - nameOfSoundClip: EnemyDestroyed
     clip: {fileID: 8300000, guid: 3d6757fe93f17e14bac52d1cdc082b3b, type: 3}
+    volume: 0.158
+    pitch: 0.89
+    loop: 0
+    source: {fileID: 0}
+    volumeSafe: 0
+    blend: 0
+  - nameOfSoundClip: BossMeleeAttack
+    clip: {fileID: 8300000, guid: ff189091d1eaf1b47948fc3f7c3123fc, type: 3}
     volume: 0.158
     pitch: 0.89
     loop: 0
