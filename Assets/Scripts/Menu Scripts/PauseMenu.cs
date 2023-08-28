@@ -55,11 +55,12 @@ public class PauseMenu : MonoBehaviour
     public void LoadMenu()
     {
         SceneManager.LoadScene("MainMenu");
-        AudioManager.Instance.MuteSound("CaveBoss");
+        
         AudioManager.Instance.UnmuteSound("Theme");
 
         AudioManager.Instance.SetMasterVolume(AudioSettings.Instance.masterVolume);
-
+        AudioManager.Instance.MuteSound("CaveBoss");
+        AudioManager.Instance.MuteSound("BossMusic");
 
         AudioManager.Instance.PlaySound("Theme");
         

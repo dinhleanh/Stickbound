@@ -27,7 +27,7 @@ public class BossHealthbarUI : MonoBehaviour
             healthSlider.gameObject.SetActive(show);
         //AudioManager.Instance.MuteSound("CaveBoss");
         //AudioManager.Instance.PlaySound("PlayerDash");
-        
+        //AudioManager.Instance.PlaySound("BossMusic");
         // Zeige oder blende die Healthbar basierend auf "show" ein oder aus
        
     }

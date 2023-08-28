@@ -81,6 +81,7 @@ public class GameManager : MonoBehaviour
         playerStats.gameObject.SetActive(false);
 
         FindObjectOfType<AudioManager>().MuteSound("CaveBoss");
+        FindObjectOfType<AudioManager>().MuteSound("BossMusic");
         FindObjectOfType<AudioManager>().UnmuteSound("Theme");
         FindObjectOfType<AudioManager>().PlaySound("Theme");
 

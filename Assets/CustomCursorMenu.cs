@@ -10,7 +10,7 @@ public class CustomCursorMenu : MonoBehaviour
     private void Awake()
     {
         Cursor.visible = true;
-        Cursor.lockState = CursorLockMode.Confined;
+        Cursor.lockState = CursorLockMode.None;
         Cursor.SetCursor(cursorTexture, new Vector2(cursorTexture.width / 2f, cursorTexture.height / 2f), CursorMode.Auto);
     }
     // Start is called before the first frame update
@@ -23,7 +23,7 @@ public class CustomCursorMenu : MonoBehaviour
     void Update()
     {
         Cursor.visible = true;
-        Cursor.lockState = CursorLockMode.Confined;
+        Cursor.lockState = CursorLockMode.None;
         Cursor.SetCursor(cursorTexture, new Vector2(cursorTexture.width / 2f, cursorTexture.height / 2f), CursorMode.Auto);
     }
 }

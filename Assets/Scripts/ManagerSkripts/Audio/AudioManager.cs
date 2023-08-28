@@ -96,7 +96,7 @@ public class AudioManager : MonoBehaviour
             Debug.LogWarning("Sound: " + name + " cannot be found!");
             return;
         }
-        
+        s.source.volume = s.volumeSafe;
         s.source.Play();
         
     }
@@ -165,12 +165,18 @@ public class AudioManager : MonoBehaviour
     {
         foreach (Sound s in sounds)
         {
-            s.source.volume = s.volumeSafe * volume;
+            if (s.source.volume > 0f) // Überprüfe, ob der Sound nicht gemutet ist
+            {
+                s.source.volume = s.volumeSafe * volume;
+            }
         }
 
         foreach (Sound s in footstepSounds)
         {
-            s.source.volume = s.volumeSafe * volume;
+            if (s.source.volume > 0f) // Überprüfe, ob der Sound nicht gemutet ist
+            {
+                s.source.volume = s.volumeSafe * volume;
+            }
         }
     }
 }

@@ -18,6 +18,7 @@ public class E1V2_DeadState : DeadState
     public override void Enter()
     {
         base.Enter();
+        AudioManager.Instance.PlaySound("CheckPointAberEigDash");
     }
 
     public override void Exit()
@@ -28,6 +29,7 @@ public class E1V2_DeadState : DeadState
     public override void LogicUpdate()
     {
         base.LogicUpdate();
+        
     }
 
     public override void PhysicsUpdate()
