@@ -63,7 +63,7 @@ MonoBehaviour:
     blend: 0
   - nameOfSoundClip: PlayerHit
     clip: {fileID: 8300000, guid: 6b75384920b57524bb7fb89dcdbf1a52, type: 3}
-    volume: 0.165
+    volume: 0.147
     pitch: 0.91
     loop: 0
     source: {fileID: 0}
@@ -79,7 +79,7 @@ MonoBehaviour:
     blend: 0
   - nameOfSoundClip: PlayerJump
     clip: {fileID: 8300000, guid: 9184a0cc89570044eb0e02602cb90e69, type: 3}
-    volume: 0.041
+    volume: 0.017
     pitch: 0.7
     loop: 0
     source: {fileID: 0}
@@ -95,8 +95,8 @@ MonoBehaviour:
     blend: 0
   - nameOfSoundClip: CheckPointAberEigDash
     clip: {fileID: 8300000, guid: 8e56a742bc4b6124d87a93741246b441, type: 3}
-    volume: 0.208
-    pitch: 0.89
+    volume: 0.136
+    pitch: 1
     loop: 0
     source: {fileID: 0}
     volumeSafe: 0
